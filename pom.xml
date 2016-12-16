@@ -70,11 +70,11 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <finalName>helloworld</finalName>
+                    <finalName>hub-content-feed</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>org.moj.hub.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
