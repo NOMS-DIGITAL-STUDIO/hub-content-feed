@@ -13,6 +13,7 @@ public class PostgresRepository implements MetadataRepository {
 
     public PostgresRepository() throws URISyntaxException, SQLException {
         String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        System.out.println("JDBC_DATABASE_URL: " + dbUrl);
         connection = DriverManager.getConnection(dbUrl);
     }
 
