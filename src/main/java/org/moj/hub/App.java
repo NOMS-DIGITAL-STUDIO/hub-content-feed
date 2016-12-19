@@ -13,6 +13,8 @@ import static spark.Spark.*;
 public class App {
 
     public static void main(String[] args) throws URISyntaxException, SQLException {
+        port(Integer.valueOf(System.getProperty("PORT")));
+
         get("/hello", (req, res) -> "Hello World");
 
         Gson gson = new Gson();
