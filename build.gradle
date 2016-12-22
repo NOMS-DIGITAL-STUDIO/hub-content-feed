@@ -1,0 +1,27 @@
+
+apply plugin: 'idea'
+apply plugin: 'java'
+
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+description = 'hub content feed'
+
+dependencies {
+    compile 'com.sparkjava:spark-core:2.2'
+    compile 'org.postgresql:postgresql:9.4.1208'
+    compile 'com.google.code.gson:gson:2.2.4'
+    
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.assertj:assertj-core:3.6.1'
+    testCompile 'org.mockito:mockito-all:1.9.5'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14.1'
+}
