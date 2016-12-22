@@ -6,7 +6,5 @@ target/
 *.iws
 .gradle
 build/
-gradle/
-gradlew
 gradlew.bat
 out/
