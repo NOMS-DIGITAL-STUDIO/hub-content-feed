@@ -25,3 +25,7 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.14.1'
 }
+
+//We need stage as current project is not a spring boot. Once it does become a springboot this can be removed.
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
