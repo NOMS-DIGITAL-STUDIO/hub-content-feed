@@ -15,14 +15,14 @@ class GetArticleTest extends Specification {
 
 
      def 'Get with Jersey Client'() throws Exception {
-        given:
-        UUID uuid = anArticleExistsInTheDb()
+//        given:
+//        UUID uuid = anArticleExistsInTheDb()
 
-        when:
-        Map<String, Object> article = getArticleFromService(uuid)
+//        when:
+//        Map<String, Object> article = getArticleFromService(uuid)
 
-        then:
-        article.get('title') == 'aTitle'
+//        then:
+//        article.get('title') == 'aTitle'
     }
 
     private Map<String, Object> getArticleFromService(UUID uuid) {
