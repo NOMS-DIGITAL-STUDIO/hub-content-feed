@@ -1,7 +1,7 @@
-package org.moj.hub.ports.database;
+package uk.gov.justice.digital.noms.hub.ports.database;
 
-import org.moj.hub.domain.Article;
-import org.moj.hub.domain.MetadataRepository;
+import uk.gov.justice.digital.noms.hub.domain.Article;
+import uk.gov.justice.digital.noms.hub.domain.MetadataRepository;
 
 import java.net.URISyntaxException;
 import java.sql.*;

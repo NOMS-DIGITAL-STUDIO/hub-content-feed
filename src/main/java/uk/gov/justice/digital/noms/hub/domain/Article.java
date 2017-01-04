@@ -1,4 +1,4 @@
-package org.moj.hub.domain;
+package uk.gov.justice.digital.noms.hub.domain;
 
 public class Article {
     private final String title;

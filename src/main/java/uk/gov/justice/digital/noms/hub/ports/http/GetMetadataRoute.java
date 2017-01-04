@@ -1,6 +1,6 @@
-package org.moj.hub.ports.http;
+package uk.gov.justice.digital.noms.hub.ports.http;
 
-import org.moj.hub.domain.MetadataRepository;
+import uk.gov.justice.digital.noms.hub.domain.MetadataRepository;
 import spark.Request;
 import spark.Response;
 import spark.Route;

@@ -1,9 +1,10 @@
-package org.moj.hub;
+package uk.gov.justice.digital.noms.hub;
 
 import com.google.gson.Gson;
-import org.moj.hub.domain.MetadataRepository;
-import org.moj.hub.ports.database.PostgresRepository;
-import org.moj.hub.ports.http.GetMetadataRoute;
+import uk.gov.justice.digital.noms.hub.domain.MetadataRepository;
+import uk.gov.justice.digital.noms.hub.ports.database.PostgresRepository;
+import uk.gov.justice.digital.noms.hub.ports.http.GetMetadataRoute;
+import spark.Spark;
 
 import java.net.URISyntaxException;
 import java.sql.SQLException;
@@ -19,6 +20,6 @@ public class App {
 
         Gson gson = new Gson();
         MetadataRepository metadataRepository = new PostgresRepository();
-        get("/articles/:id", new GetMetadataRoute(metadataRepository), gson::toJson);
+        Spark.get("/articles/:id", new GetMetadataRoute(metadataRepository), gson::toJson);
     }
 }

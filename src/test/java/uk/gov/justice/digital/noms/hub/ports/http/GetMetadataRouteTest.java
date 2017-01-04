@@ -1,11 +1,11 @@
-package org.moj.hub.ports.http;
+package uk.gov.justice.digital.noms.hub.ports.http;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.moj.hub.domain.Article;
-import org.moj.hub.domain.MetadataRepository;
+import uk.gov.justice.digital.noms.hub.domain.Article;
+import uk.gov.justice.digital.noms.hub.domain.MetadataRepository;
 import spark.Request;
 import spark.Response;
 

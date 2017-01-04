@@ -1,4 +1,4 @@
-package org.moj.hub.domain;
+package uk.gov.justice.digital.noms.hub.domain;
 
 import java.util.UUID;
 

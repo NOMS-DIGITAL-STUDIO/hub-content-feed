@@ -1,5 +1,9 @@
 deployment:
   staging:
     branch: master
-    heroku:
-      appname: hub-content-feed-noms
+    commands:
+      - git push git@heroku.com:hub-content-feed-noms.git $CIRCLE_SHA1:master
+      - pwd
+      - gradle functionaltest
+#    heroku:
+#      appname: hub-content-feed-noms

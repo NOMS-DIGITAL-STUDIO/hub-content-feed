@@ -1,10 +1,20 @@
 
 apply plugin: 'idea'
 apply plugin: 'java'
-
+apply plugin: 'groovy'
 
 repositories {
     mavenCentral()
+}
+
+sourceSets {
+    functionaltest {
+        compileClasspath = sourceSets.main.output + configurations.testRuntime
+        runtimeClasspath = output + sourceSets.main.output + configurations.testRuntime
+        groovy {
+            srcDir 'src/functionaltest'
+        }
+    }
 }
 
 sourceCompatibility = 1.8
@@ -20,10 +30,36 @@ dependencies {
     testCompile 'junit:junit:4.11'
     testCompile 'org.assertj:assertj-core:3.6.1'
     testCompile 'org.mockito:mockito-all:1.9.5'
+
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.21.1'
+
+    testCompile 'org.glassfish.jersey.core:jersey-client:2.21'
+    testCompile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.25'
+
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile 'org.codehaus.groovy:groovy-all:2.4.7'
+    testCompile 'cglib:cglib-nodep:3.1'
+}
+
+//test {
+//    systemProperty 'JDBC_DATABASE_URL', 'jdbc:postgresql://localhost:5432/hub_metadata'
+//}
+
+task functionaltest(type: Test) {
+    System.setProperty( 'JDBC_DATABASE_URL', 'jdbc:postgresql://localhost:5432/hub_metadata')
+    System.out.println('PRINT JDBC************************')
+    System.out.println(System.getProperty('JDBC_DATABASE_URL'))
+    testClassesDir = sourceSets.functionaltest.output.classesDir
+    classpath = sourceSets.functionaltest.runtimeClasspath
+    outputs.upToDateWhen { false }
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.14.1'
+}
+
+tasks.withType(Test) {
+    reports.html.destination = file("${reporting.baseDir}/${name}")
 }
 
 //We need stage as current project is not a spring boot. Once it does become a springboot this can be removed.
