@@ -1,3 +1,7 @@
+test:
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
 deployment:
   staging:
     branch: master
@@ -5,6 +9,7 @@ deployment:
       - git push git@heroku.com:hub-content-feed-noms.git $CIRCLE_SHA1:master
       - pwd
       - gradle -v
-      - gradle functionaltest
+      #default version of gradle on CircleCI is 1.10.
+      - ./gradlew functionaltest
 #    heroku:
 #      appname: hub-content-feed-noms
