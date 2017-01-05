@@ -14,7 +14,11 @@ import java.sql.Statement
 class GetArticleTest extends Specification {
 
 
-     def 'Get with Jersey Client'() throws Exception {
+    def 'Call Rest Service'() throws Exception {
+
+    }
+
+    def 'Get with Jersey Client'() throws Exception {
 //        given:
 //        UUID uuid = anArticleExistsInTheDb()
 

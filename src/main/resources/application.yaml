@@ -1,0 +1,21 @@
+server:
+    contextPath: ${hub.content.feed.contextpath:/hub-content-feed}
+spring:
+    main:
+        banner-mode: off
+    jackson:
+        deserialization:
+            fail-on-unknown-properties: ${hub.content.feed.jackson.deserialization.enabled:false}
+hub:
+  content:
+        feed:
+            datastore:
+                      url: ${hubcontentfeed.datastore.url:unknown}
+#Exposed Endpoints
+endpoints:
+    enabled: false
+    health:
+        enabled: ${hub.content.feed.endpoints.health.enabled:true}
+    metrics:
+        enabled: ${hub.content.feed.endpoints.metrics.enabled:true}
+---

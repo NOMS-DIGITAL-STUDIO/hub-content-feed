@@ -1,25 +1,21 @@
 package uk.gov.justice.digital.noms.hub;
 
-import com.google.gson.Gson;
-import uk.gov.justice.digital.noms.hub.domain.MetadataRepository;
-import uk.gov.justice.digital.noms.hub.ports.database.PostgresRepository;
-import uk.gov.justice.digital.noms.hub.ports.http.GetMetadataRoute;
-import spark.Spark;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
 
-import java.net.URISyntaxException;
-import java.sql.SQLException;
+@SpringBootApplication
+@ComponentScan("uk.gov.justice.digital.noms.hub")
+public class App extends SpringBootServletInitializer {
 
-import static spark.Spark.*;
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(App.class);
+    }
 
-public class App {
-
-    public static void main(String[] args) throws URISyntaxException, SQLException {
-        port(Integer.valueOf(System.getProperty("PORT")));
-
-        get("/hello", (req, res) -> "Hello World");
-
-        Gson gson = new Gson();
-        MetadataRepository metadataRepository = new PostgresRepository();
-        Spark.get("/articles/:id", new GetMetadataRoute(metadataRepository), gson::toJson);
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
     }
 }
