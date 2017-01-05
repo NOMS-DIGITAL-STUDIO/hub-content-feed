@@ -93,6 +93,5 @@ bootRun {
     systemProperties = System.properties
 }
 
-//We need stage as current project is not a spring boot. Once it does become a springboot this can be removed.
-//task stage(dependsOn: ['build', 'clean'])
-//build.mustRunAfter clean
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean

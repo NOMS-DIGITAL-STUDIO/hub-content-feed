@@ -1,1 +1,1 @@
-web: java -DPORT=$PORT -jar target/hub-content-feed.jar
+#web: java -DPORT=$PORT -jar target/hub-content-feed.jar

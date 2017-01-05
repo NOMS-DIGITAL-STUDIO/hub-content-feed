@@ -18,6 +18,7 @@ public class MongoRepository implements MetadataRepository {
 
     @Override
     public ContentItem getContentItemForId(UUID uuid) {
+        System.out.println("DBURL: " + databaseURL);
         Assert.notNull(databaseURL, "DatabaseURL is null");
         return ContentItem.builder().title("CANNED TITLE").build();
     }
