@@ -93,5 +93,5 @@ bootRun {
     systemProperties = System.properties
 }
 
-task stage(dependsOn: ['build', 'clean'])
-build.mustRunAfter clean
+//task stage(dependsOn: ['build', 'clean'])
+//build.mustRunAfter clean
