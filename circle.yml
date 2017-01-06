@@ -9,7 +9,7 @@ test:
     - ls -ltra
     - cd build
     - ls -ltra
-    - cp -r build/libs $CIRCLE_ARTIFACTS
+    - cp -r build $CIRCLE_ARTIFACTS
 #    - find . -type f -regex ".*/build/libs/hub-content-feed.jar" -exec cp {} $CIRCLE_ARTIFACTS \;
 deployment:
   staging:
