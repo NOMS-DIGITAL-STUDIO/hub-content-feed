@@ -15,6 +15,6 @@ deployment:
       - gradle -v
       #default version of gradle on CircleCI is 1.10.
       - ./gradlew functionaltest
-#      - find . -type f -regex ".*/build/test-results/functionaltest/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/functionaltest/ \;
+      - find . -type f -regex ".*/build/test-results/functionaltest/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/functionaltest/ \;
 #    heroku:
 #      appname: hub-content-feed-noms
