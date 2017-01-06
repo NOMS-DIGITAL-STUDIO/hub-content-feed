@@ -20,7 +20,7 @@ deployment:
       - git push git@heroku.com:hub-content-feed-noms.git $CIRCLE_SHA1:refs/heads/master
 #      - heroku scale worker=1 --app hub-content-feed-noms
 #      - heroku ps
-      - heroku ps:scale web=1
+      - heroku ps:scale web=1 --app hub-content-feed-noms
       - pwd
       - gradle -v
       #default version of gradle on CircleCI is 1.10.
