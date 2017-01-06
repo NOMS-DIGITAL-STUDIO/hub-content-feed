@@ -65,6 +65,7 @@ task functionaltest(type: Test) {
     systemProperties = System.properties
     System.out.println('PRINT DEPLOYED URL FOR TEST PURPOSES')
     System.out.println(System.getProperty('deployedURL'))
+    System.out.println(System.getenv('deployedURL'))
 
     testClassesDir = sourceSets.functionaltest.output.classesDir
     classpath = sourceSets.functionaltest.runtimeClasspath
