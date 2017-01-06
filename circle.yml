@@ -5,12 +5,12 @@ test:
   override:
     - ./gradlew build
   post:
-    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-    - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+#    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+#    - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
     - pwd
-    - ls -ltra
-    - cd build
-    - ls -ltra
+#    - ls -ltra
+#    - cd build
+#    - ls -ltra
     - cp -r build $CIRCLE_ARTIFACTS
 #    - find . -type f -regex ".*/build/libs/hub-content-feed.jar" -exec cp {} $CIRCLE_ARTIFACTS \;
 deployment:
@@ -20,6 +20,7 @@ deployment:
       - git push git@heroku.com:hub-content-feed-noms.git $CIRCLE_SHA1:refs/heads/master
 #      - heroku scale worker=1 --app hub-content-feed-noms
 #      - heroku ps
+      - heroku ps:scale web=1
       - pwd
       - gradle -v
       #default version of gradle on CircleCI is 1.10.
