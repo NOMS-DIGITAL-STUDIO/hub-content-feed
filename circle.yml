@@ -2,11 +2,12 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+#    - mkdir -p $CIRCLE_ARTIFACTS/jar/
+    - find . -type f -regex ".*/build/libs/hub-content-feed*.jar" -exec cp {} $CIRCLE_ARTIFACTS/ \;
 deployment:
   staging:
     branch: master
     commands:
-      - find . -type f -regex ".*/build/libs/hub-content-feed*.jar" -exec cp {} $CIRCLE_ARTIFACTS \;
       - git push git@heroku.com:hub-content-feed-noms.git $CIRCLE_SHA1:refs/heads/master
 #      - heroku scale worker=1 --app hub-content-feed-noms
 #      - heroku ps
