@@ -62,8 +62,10 @@ dependencies {
 
 task functionaltest(type: Test) {
     System.setProperty( 'JDBC_DATABASE_URL', 'jdbc:postgresql://localhost:5432/hub_metadata')
-    System.out.println('PRINT JDBC************************')
-    System.out.println(System.getProperty('JDBC_DATABASE_URL'))
+    systemProperties = System.properties
+    System.out.println('PRINT DEPLOYED URL FOR TEST PURPOSES')
+    System.out.println(System.getProperty('deployedURL'))
+
     testClassesDir = sourceSets.functionaltest.output.classesDir
     classpath = sourceSets.functionaltest.runtimeClasspath
     outputs.upToDateWhen { false }

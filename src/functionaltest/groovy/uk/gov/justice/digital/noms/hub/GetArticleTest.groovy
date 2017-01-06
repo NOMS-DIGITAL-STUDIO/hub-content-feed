@@ -1,18 +1,34 @@
 package uk.gov.justice.digital.noms.hub
 
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.http.ResponseEntity
+import org.springframework.web.client.RestTemplate
 import spock.lang.Specification
-
+import uk.gov.justice.digital.noms.hub.domain.ContentItem
 
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
 import java.sql.Statement
 
+import static org.assertj.core.api.Assertions.assertThat
+import static org.hamcrest.CoreMatchers.containsString
+import static org.hamcrest.CoreMatchers.notNullValue
+
 class GetArticleTest extends Specification {
 
-
     def 'Call Rest Service'() throws Exception {
+        setup:
+        String deployedUrl = System.getProperty('deployedURL')
+        System.out.println("URL: $deployedUrl")
+        RestTemplate restTemplate = new RestTemplate();
 
+        when:
+        ResponseEntity<String>  response= restTemplate.getForEntity(deployedUrl, String.class)
+
+        then:
+        assertThat(response, notNullValue())
+        assertThat(response, containsString('CANNED TITLE'))
     }
 
     def 'Get with Jersey Client'() throws Exception {
