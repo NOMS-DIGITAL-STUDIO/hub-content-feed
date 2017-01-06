@@ -2,8 +2,8 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-#    - mkdir -p $CIRCLE_ARTIFACTS/jar/
-    - find . -type f -regex ".*/build/libs/hub-content-feed*.jar" -exec cp {} $CIRCLE_ARTIFACTS/ \;
+    - mkdir -p $CIRCLE_ARTIFACTS/jar/
+    - find . -type f -regex ".*/build/libs/hub-content-feed*.jar" -exec cp {} $CIRCLE_ARTIFACTS/jar/ \;
 deployment:
   staging:
     branch: master
@@ -15,6 +15,7 @@ deployment:
       - gradle -v
       #default version of gradle on CircleCI is 1.10.
       - ./gradlew functionaltest
+      - mkdir -p $CIRCLE_TEST_REPORTS/functionaltest/
       - find . -type f -regex ".*/build/test-results/functionaltest/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/functionaltest/ \;
 #    heroku:
 #      appname: hub-content-feed-noms
