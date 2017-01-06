@@ -6,7 +6,10 @@ deployment:
   staging:
     branch: master
     commands:
-      - git push git@heroku.com:hub-content-feed-noms.git $CIRCLE_SHA1:master
+      - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+      - git push git@heroku.com:hub-content-feed-noms.git $CIRCLE_SHA1:refs/heads/master
+      - heroku scale worker=1 --app hub-content-feed-noms
+      - heroku ps
       - pwd
       - gradle -v
       #default version of gradle on CircleCI is 1.10.
