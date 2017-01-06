@@ -5,8 +5,8 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-    - mkdir -p $CIRCLE_ARTIFACTS/jar/
-    - find . -type f -regex ".*/build/libs/hub-content-feed.jar" -exec cp {} $CIRCLE_ARTIFACTS/jar/ \;
+    - cp -r build/libs $CIRCLE_ARTIFACTS
+#    - find . -type f -regex ".*/build/libs/hub-content-feed.jar" -exec cp {} $CIRCLE_ARTIFACTS \;
 deployment:
   staging:
     branch: master
