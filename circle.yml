@@ -16,6 +16,6 @@ deployment:
       - echo $CIRCLE_BUILD_NUM
       - echo $CIRCLE_COMPARE_URL
       - ./functest.sh
+      - mkdir -p $CIRCLE_TEST_REPORTS/functionaltest/
       - find . -type f -regex ".*/build/test-results/functionaltest" -exec cp {} $CIRCLE_TEST_REPORTS/functionaltest/ \;
-      - if [[$? = 0]]; then exit 1 fi
 
