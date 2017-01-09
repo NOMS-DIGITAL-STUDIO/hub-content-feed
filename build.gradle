@@ -61,20 +61,15 @@ dependencies {
 //}
 
 task functionaltest(type: Test) {
-    System.setProperty( 'JDBC_DATABASE_URL', 'jdbc:postgresql://localhost:5432/hub_metadata')
     systemProperties = System.properties
-    System.out.println('PRINT DEPLOYED URL FOR TEST PURPOSES')
-    System.out.println(System.getProperty('deployedURL'))
-    System.out.println(System.getenv('deployedURL'))
-
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat = 'full'
+    }
     testClassesDir = sourceSets.functionaltest.output.classesDir
     classpath = sourceSets.functionaltest.runtimeClasspath
     outputs.upToDateWhen { false }
 }
-
-//functionaltest {
-//
-//}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '3.1'
@@ -92,7 +87,6 @@ test {
 }
 
 bootRun {
-    // support passing -Dsystem.property=value to bootRun task
     systemProperties = System.properties
 }
 
@@ -108,6 +102,3 @@ stage.mustRunAfter(clean)
 clean << {
     project.file('hub-content-feed.jar').delete()
 }
-
-//task stage(dependsOn: ['build', 'clean'])
-//build.mustRunAfter clean

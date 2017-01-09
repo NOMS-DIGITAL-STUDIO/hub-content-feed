@@ -8,8 +8,8 @@ import uk.gov.justice.digital.noms.hub.controller.HubController
 import uk.gov.justice.digital.noms.hub.domain.ContentItem
 import uk.gov.justice.digital.noms.hub.domain.MetadataRepository
 
-import static org.assertj.core.api.Assertions.assertThat
 import static org.hamcrest.CoreMatchers.notNullValue
+import static org.hamcrest.MatcherAssert.assertThat
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
