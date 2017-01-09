@@ -37,7 +37,7 @@ class GetMetadataRouteTest extends Specification {
         when:
         String result = mockMvc.perform(get('/content-items/' + uuid))
                 .andDo(print())
-                .andExpect(jsonPath('$.title').value('Title A'))
+                .andExpect(jsonPath('$.title').value('Title B'))
                 .andExpect(status().isOk())
 
         then:
