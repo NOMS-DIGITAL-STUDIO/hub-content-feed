@@ -23,6 +23,6 @@ class GetArticleTest extends Specification {
 
         then:
         assertThat(response, notNullValue())
-        assertThat(response.toString(), containsString('CANNEDA TITLE'))
+        assertThat(response.toString(), containsString('CANNED TITLE'))
     }
 }
