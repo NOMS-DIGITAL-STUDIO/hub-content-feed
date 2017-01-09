@@ -13,7 +13,12 @@ deployment:
     commands:
       - git push git@heroku.com:hub-content-feed-noms.git $CIRCLE_SHA1:master
       - heroku ps:scale web=1 --app hub-content-feed-noms
-      - ./gradlew functionaltest
+      - echo $CIRCLE_BUILD_NUM
+      - echo $CIRCLE_COMPARE_URL
+      - output='./gradlew functionaltest'
+      - echo -e $output
+      - echo $output | grep "FAILED"
       - mkdir -p $CIRCLE_TEST_REPORTS/functionaltest/
       - find . -type f -regex ".*/build/test-results/functionaltest" -exec cp {} $CIRCLE_TEST_REPORTS/functionaltest/ \;
+      - if [[$? = 0]]; then exit 1 fi
 
