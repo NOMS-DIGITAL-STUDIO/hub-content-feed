@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-echo $CIRCLE_TEST_REPORTS;
 ./gradlew functionaltest;
 STATUS_CODE="$?"
 echo "Exit Code" $STATUS_CODE;
