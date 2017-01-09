@@ -5,6 +5,7 @@ import org.springframework.web.client.RestTemplate
 import spock.lang.Specification
 
 import static org.assertj.core.api.Assertions.assertThat
+import static org.assertj.core.api.Assertions.fail
 import static org.hamcrest.CoreMatchers.containsString
 import static org.hamcrest.CoreMatchers.notNullValue
 
@@ -20,6 +21,7 @@ class GetArticleTest extends Specification {
         ResponseEntity<String>  response= restTemplate.getForEntity(deployedUrl, String.class)
 
         then:
+        fail('AKFAILED')
         assertThat(response, notNullValue())
         assertThat(response, containsString('CANNED TITLE'))
     }
