@@ -13,8 +13,6 @@ deployment:
     commands:
       - git push git@heroku.com:hub-content-feed-noms.git $CIRCLE_SHA1:master
       - heroku ps:scale web=1 --app hub-content-feed-noms
-      - echo $CIRCLE_BUILD_NUM
-      - echo $CIRCLE_COMPARE_URL
       - ./functest.sh
       - mkdir -p $CIRCLE_TEST_REPORTS/functionaltest/
       - find . -type f -regex ".*/build/test-results/functionaltest" -exec cp {} $CIRCLE_TEST_REPORTS/functionaltest/ \;
