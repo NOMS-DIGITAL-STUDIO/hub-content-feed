@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
+echo $CIRCLE_TEST_REPORTS;
 ./gradlew functionaltest;
-echo $CIRCLE_TEST_REPORTS
 if [[ ${PIPESTATUS[0]} != 0 ]];
     then
-    echo "FAILED TEST COPY REPORTS"
+      echo "FAILED TEST COPY REPORTS";
       pwd;
       ls -ltra;
       mkdir -p $CIRCLE_TEST_REPORTS/functionaltest/;
       find . -type f -regex ".*/build/test-results/functionaltest" -exec cp {} $CIRCLE_TEST_REPORTS/functionaltest/ \;
-    exit 1
+      echo "Returning exit 1";
+      exit 1
 fi
