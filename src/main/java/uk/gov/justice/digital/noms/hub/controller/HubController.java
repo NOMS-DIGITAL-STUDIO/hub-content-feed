@@ -29,7 +29,7 @@ public class HubController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ContentItem findContentItemForUUID(@PathVariable UUID id) {
-        log.info("Retrieve Content Item UUID {}", id);
+        log.info("Retrieve1 Content Item UUID {}", id);
         return metadataRepository.getContentItemForId(id);
     }
 
