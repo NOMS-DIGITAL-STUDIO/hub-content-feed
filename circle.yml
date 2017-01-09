@@ -16,5 +16,10 @@ deployment:
       - ./gradlew functionaltest
       - mkdir -p $CIRCLE_TEST_REPORTS/functionaltest/
       - find . -type f -regex ".*/build/test-results/functionaltest" -exec cp {} $CIRCLE_TEST_REPORTS/functionaltest/ \;
-
+test:
+  override:
+    - ./gradlew functionaltest
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/functionaltest/
+    - find . -type f -regex ".*/build/test-results/functionaltest" -exec cp {} $CIRCLE_TEST_REPORTS/functionaltest/ \;
 
