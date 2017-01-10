@@ -56,10 +56,6 @@ dependencies {
     testCompile 'org.springframework:spring-test:4.3.5.RELEASE'
 }
 
-//test {
-//    systemProperty 'JDBC_DATABASE_URL', 'jdbc:postgresql://localhost:5432/hub_metadata'
-//}
-
 task functionaltest(type: Test) {
     systemProperties = System.properties
     testLogging {
