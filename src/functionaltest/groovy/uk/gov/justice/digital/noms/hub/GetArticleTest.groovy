@@ -15,7 +15,7 @@ class GetArticleTest extends Specification {
     def 'Call Rest Service'() throws Exception {
         setup:
         String deployedUrl = System.getenv('deployedURL')
-        log.info('URL: {}', deployedUrl)
+        log.info('URL1: {}', deployedUrl)
         RestTemplate restTemplate = new RestTemplate();
 
         when:
