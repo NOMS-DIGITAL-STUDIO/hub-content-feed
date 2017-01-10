@@ -7,6 +7,6 @@ deployment:
   staging:
     branch: master
     commands:
-      - git push git@heroku.com:hub-content-feed-noms.git $CIRCLE_SHA1:master
-      - heroku ps:scale web=1 --app hub-content-feed-noms
+      - git push git@heroku.com:hub-content-feed.git $CIRCLE_SHA1:master
+      - heroku ps:scale web=1 --app hub-content-feed
       - ./run-functional-test.sh
