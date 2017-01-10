@@ -71,10 +71,6 @@ task wrapper(type: Wrapper) {
     gradleVersion = '3.1'
 }
 
-tasks.withType(Test) {
-    reports.html.destination = file("${reporting.baseDir}/${name}")
-}
-
 test {
     testLogging {
         events "passed", "skipped", "failed", "standardOut", "standardError"
@@ -86,15 +82,3 @@ bootRun {
     systemProperties = System.properties
 }
 
-task stage(type: Copy, dependsOn: [clean, build]) {
-    from jar.archivePath
-    into project.rootDir
-    rename {
-        'hub-content-feed.jar'
-    }
-}
-stage.mustRunAfter(clean)
-
-clean << {
-    project.file('hub-content-feed.jar').delete()
-}
