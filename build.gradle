@@ -86,15 +86,15 @@ bootRun {
     systemProperties = System.properties
 }
 
-task stage(type: Copy, dependsOn: [clean, build]) {
-    from jar.archivePath
-    into project.rootDir
-    rename {
-        'hub-content-feed.jar'
-    }
-}
-stage.mustRunAfter(clean)
-
-clean << {
-    project.file('hub-content-feed.jar').delete()
-}
+//task stage(type: Copy, dependsOn: [clean, build]) {
+//    from jar.archivePath
+//    into project.rootDir
+//    rename {
+//        'hub-content-feed.jar'
+//    }
+//}
+//stage.mustRunAfter(clean)
+//
+//clean << {
+//    project.file('hub-content-feed.jar').delete()
+//}

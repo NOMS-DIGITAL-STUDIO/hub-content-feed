@@ -1,11 +1,7 @@
-general:
-  artifacts:
-    - "build/libs/hub-content-feed.jar"
 test:
   override:
     - ./gradlew build
   post:
-    - pwd
     - cp -r build $CIRCLE_ARTIFACTS
 deployment:
   staging:
@@ -13,4 +9,4 @@ deployment:
     commands:
       - git push git@heroku.com:hub-content-feed-noms.git $CIRCLE_SHA1:master
       - heroku ps:scale web=1 --app hub-content-feed-noms
-      - ./functest.sh
+      - ./run-functional-test.sh
