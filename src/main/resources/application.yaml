@@ -3,7 +3,8 @@ server:
 spring:
     data:
         mongodb:
-            uri: ${hubcontentfeed.mongodb.connectionurl:mongodb://localhost:27017/hub_metadata}
+            uri: ${hubcontentfeed.mongodb.connectionurl:mongodb://localhost:27017}
+            database:  ${hubcontentfeed.mongodb.database:hub_metadata}
     main:
         banner-mode: off
     jackson:
