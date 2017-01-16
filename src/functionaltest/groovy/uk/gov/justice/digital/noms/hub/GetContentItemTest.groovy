@@ -1,5 +1,6 @@
 package uk.gov.justice.digital.noms.hub
 
+import com.jayway.jsonpath.JsonPath
 import com.mongodb.MongoClient
 import com.mongodb.MongoClientURI
 import com.mongodb.client.MongoDatabase
@@ -19,13 +20,15 @@ import static org.hamcrest.MatcherAssert.assertThat
 @Slf4j
 class GetContentItemTest extends Specification {
 
-    public static final String PREFIX = 'hub-content-feed'
-    public static final String CONTENT_ITEM = 'contentItem'
+    private static final String TITLE_PREFIX = 'hub-content-feed'
+    private static final String CONTENT_ITEM = 'contentItem'
     private String deployedUrl
     private String mongoDbURL
     private MongoDatabase mongoDatabase
+    private RestTemplate restTemplate
 
     def setup() {
+        restTemplate = new RestTemplate()
         setupDeployedUrl()
         setupMongoDB()
         clearDownMongoDB()
@@ -33,8 +36,7 @@ class GetContentItemTest extends Specification {
 
     def 'Call Rest Service'() throws Exception {
         setup:
-        String id = setupMongoRecord(PREFIX+'-Call Rest Service')
-        RestTemplate restTemplate = new RestTemplate()
+        String id = setupMongoRecord(TITLE_PREFIX+'-Call Rest Service', 'http://localhost/test/somefile.pdf')
 
         when:
         ResponseEntity<String>  response= restTemplate.getForEntity(deployedUrl+'/content-items/'+id, String.class)
@@ -42,7 +44,9 @@ class GetContentItemTest extends Specification {
         then:
         assertThat(response, notNullValue())
         assertThat(response.statusCode, is(HttpStatus.OK))
-        assertThat(response.toString(), containsString(PREFIX))
+        assertThat(JsonPath.read(response.getBody(),'$.title'), is(TITLE_PREFIX+'-Call Rest Service'))
+        assertThat(JsonPath.read(response.getBody(),'$.mediaUri'), is('http://localhost/test/somefile.pdf'))
+
     }
 
     private void setupMongoDB() {
@@ -68,8 +72,8 @@ class GetContentItemTest extends Specification {
         mongoDatabase.getCollection(CONTENT_ITEM).deleteMany(deleteFilter)
     }
 
-    private String setupMongoRecord(String title) {
-        Document document = new Document(title: title)
+    private String setupMongoRecord(String title, String mediaUri) {
+        Document document = new Document(title: title, mediaUri: mediaUri)
         mongoDatabase.getCollection(CONTENT_ITEM).insertOne(document)
         document.get('_id').toString()
     }

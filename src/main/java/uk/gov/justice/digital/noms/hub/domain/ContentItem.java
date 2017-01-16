@@ -7,8 +7,10 @@ import lombok.Data;
 @Builder
 public class ContentItem {
     private String title;
+    private String mediaUri;
 
-    public ContentItem(String title) {
+    public ContentItem(String title, String mediaUri) {
         this.title = title;
+        this.mediaUri = mediaUri;
     }
 }

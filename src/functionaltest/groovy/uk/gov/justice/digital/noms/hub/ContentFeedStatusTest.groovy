@@ -1,5 +1,6 @@
 package uk.gov.justice.digital.noms.hub
 
+import com.jayway.jsonpath.JsonPath
 import groovy.util.logging.Slf4j
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -9,26 +10,27 @@ import spock.lang.Specification
 import static org.hamcrest.CoreMatchers.is
 import static org.hamcrest.CoreMatchers.notNullValue
 import static org.hamcrest.MatcherAssert.assertThat
+import org.springframework.test.web.servlet.result.JsonPathResultMatchers;
 
 @Slf4j
 class ContentFeedStatusTest extends Specification {
 
     private String deployedUrl
+    private RestTemplate restTemplate
 
     def setup() {
+        restTemplate = new RestTemplate()
         setupDeployedUrl()
     }
 
     def 'Call Status Endpoint'() throws Exception {
-        setup:
-        RestTemplate restTemplate = new RestTemplate()
-
         when:
-        ResponseEntity<String> response= restTemplate.getForEntity(deployedUrl+'/content-items/health', String.class)
+        ResponseEntity<String> response= restTemplate.getForEntity(deployedUrl+'/health', String.class)
 
         then:
         assertThat(response, notNullValue())
         assertThat(response.statusCode, is(HttpStatus.OK))
+        assertThat(JsonPath.read(response.getBody(),'$.status'), is('UP'))
     }
 
     private void setupDeployedUrl() {

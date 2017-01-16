@@ -31,12 +31,13 @@ class GetMetadataRouteTest extends Specification {
     def 'Retrieve the article for a given ID'() throws Exception {
         setup:
         String id = '1234'
-        metadataRepository.findOne(id) >> new ContentItem('Title A')
+        metadataRepository.findOne(id) >> new ContentItem('Title A', 'http://localhost/test/somefile.pdf')
 
         when:
         String result = mockMvc.perform(get('/content-items/' + id))
                 .andDo(print())
                 .andExpect(jsonPath('$.title').value('Title A'))
+                .andExpect(jsonPath('$.mediaUri').value('http://localhost/test/somefile.pdf'))
                 .andExpect(status().isOk())
 
         then:
