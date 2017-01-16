@@ -1,21 +1,19 @@
 server:
-    contextPath: ${hub.content.feed.contextpath:/hub-content-feed}
+    contextPath: ${hubcontentfeed.contextpath:/hub-content-feed}
 spring:
+    data:
+        mongodb:
+            uri: ${hubcontentfeed.mongodb.connectionurl:mongodb://localhost:27017/hub_metadata}
     main:
         banner-mode: off
     jackson:
         deserialization:
-            fail-on-unknown-properties: ${hub.content.feed.jackson.deserialization.enabled:false}
-hub:
-  content:
-        feed:
-            datastore:
-                      url: ${hubcontentfeed.datastore.url:unknown}
+            fail-on-unknown-properties: ${hubcontentfeed.jackson.deserialization.enabled:false}
 #Exposed Endpoints
 endpoints:
     enabled: false
     health:
-        enabled: ${hub.content.feed.endpoints.health.enabled:true}
+        enabled: ${hubcontentfeed.endpoints.health.enabled:true}
     metrics:
-        enabled: ${hub.content.feed.endpoints.metrics.enabled:true}
+        enabled: ${hubcontentfeed.endpoints.metrics.enabled:true}
 ---

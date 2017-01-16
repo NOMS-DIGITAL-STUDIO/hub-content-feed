@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 @Builder
 public class ContentItem {
-    private final String title;
+    private String title;
+
     public ContentItem(String title) {
         this.title = title;
     }
-
 }

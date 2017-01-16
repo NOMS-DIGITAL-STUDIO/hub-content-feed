@@ -4,7 +4,6 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import spock.lang.Specification
 import spock.lang.Subject
-import uk.gov.justice.digital.noms.hub.controller.HubController
 import uk.gov.justice.digital.noms.hub.domain.ContentItem
 import uk.gov.justice.digital.noms.hub.domain.MetadataRepository
 
@@ -31,11 +30,11 @@ class GetMetadataRouteTest extends Specification {
 
     def 'Retrieve the article for a given ID'() throws Exception {
         setup:
-        UUID uuid = UUID.randomUUID()
-        metadataRepository.getContentItemForId(uuid) >> new ContentItem('Title A')
+        String id = '1234'
+        metadataRepository.findOne(id) >> new ContentItem('Title A')
 
         when:
-        String result = mockMvc.perform(get('/content-items/' + uuid))
+        String result = mockMvc.perform(get('/content-items/' + id))
                 .andDo(print())
                 .andExpect(jsonPath('$.title').value('Title A'))
                 .andExpect(status().isOk())

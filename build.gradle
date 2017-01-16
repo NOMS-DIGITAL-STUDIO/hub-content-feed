@@ -20,6 +20,11 @@ buildscript {
     }
 }
 
+jar {
+    baseName = 'hub-content-feed'
+    version =  '0.0.1'
+}
+
 sourceSets {
     functionaltest {
         compileClasspath = sourceSets.main.output + configurations.testRuntime
@@ -37,6 +42,8 @@ targetCompatibility = 1.8
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+
     compile 'ch.qos.logback:logback-core:1.1.7'
 
     compile 'org.apache.commons:commons-lang3:3.3.2'

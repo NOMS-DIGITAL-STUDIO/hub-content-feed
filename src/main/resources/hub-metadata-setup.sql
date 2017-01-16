@@ -1,1 +1,0 @@
-CREATE DATABASE hub_metadata;

@@ -1,7 +1,7 @@
 package uk.gov.justice.digital.noms.hub.domain;
 
-import java.util.UUID;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface MetadataRepository {
-    ContentItem getContentItemForId(UUID id);
+
+public interface MetadataRepository extends MongoRepository<ContentItem, String> {
 }

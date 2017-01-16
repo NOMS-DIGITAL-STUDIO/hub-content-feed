@@ -1,4 +1,4 @@
-package uk.gov.justice.digital.noms.hub.controller;
+package uk.gov.justice.digital.noms.hub.ports.http;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.justice.digital.noms.hub.domain.ContentItem;
 import uk.gov.justice.digital.noms.hub.domain.MetadataRepository;
-
-import java.util.UUID;
 
 /**
  * Main Controller for Hub Content Feed.
@@ -28,10 +26,9 @@ public class HubController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ContentItem findContentItemForUUID(@PathVariable UUID id) {
-        log.info("Retrieve Content Item UUID {}", id);
-        return metadataRepository.getContentItemForId(id);
+    public ContentItem findContentItemForUUID(@PathVariable String id) {
+        log.info("Retrieve Content Item ID {}", id);
+        return  metadataRepository.findOne(id);
     }
-
 
 }
