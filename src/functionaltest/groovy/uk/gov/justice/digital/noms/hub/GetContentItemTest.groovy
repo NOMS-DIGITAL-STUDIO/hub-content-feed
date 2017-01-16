@@ -21,9 +21,9 @@ class GetContentItemTest extends Specification {
 
     public static final String PREFIX = 'hub-content-feed'
     public static final String CONTENT_ITEM = 'contentItem'
-    private String deployedUrl;
-    private String mongoDbURL;
-    private MongoDatabase mongoDatabase;
+    private String deployedUrl
+    private String mongoDbURL
+    private MongoDatabase mongoDatabase
 
     def setup() {
         setupDeployedUrl()
@@ -34,7 +34,7 @@ class GetContentItemTest extends Specification {
     def 'Call Rest Service'() throws Exception {
         setup:
         String id = setupMongoRecord(PREFIX+'-Call Rest Service')
-        RestTemplate restTemplate = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate()
 
         when:
         ResponseEntity<String>  response= restTemplate.getForEntity(deployedUrl+'/content-items/'+id, String.class)
@@ -51,8 +51,8 @@ class GetContentItemTest extends Specification {
             mongoDbURL = 'mongodb://localhost:27017'
         }
         log.info('mongoDbURL: {}', mongoDbURL)
-        MongoClient mongoClient = new MongoClient(new MongoClientURI(mongoDbURL));
-        mongoDatabase = mongoClient.getDatabase('hub_metadata');
+        MongoClient mongoClient = new MongoClient(new MongoClientURI(mongoDbURL))
+        mongoDatabase = mongoClient.getDatabase('hub_metadata')
     }
 
     private void setupDeployedUrl() {
