@@ -54,6 +54,10 @@ hubcontentfeed.mongodb.connectionurl - The MongoDb connection string. Defaults t
 e.g. mongodb:foo:<key>==@bar.documents.azure.com:10250/?ssl=true
 ```
 
+```
+hubcontentfeed.mongodb.database - The MongoDb connection database name.
+```
+
 Environment variable required by the functional tests
 ----
 ```
