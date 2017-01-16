@@ -26,9 +26,15 @@ public class HubController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ContentItem findContentItemForUUID(@PathVariable String id) {
+    public ContentItem findContentItemForID(@PathVariable String id) {
         log.info("Retrieve Content Item ID {}", id);
         return  metadataRepository.findOne(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ContentItem findLastCreatedContentItem() {
+        log.info("Retrieve Last Content Item");
+        return  metadataRepository.findTopByOrderByTitle();
     }
 
 }

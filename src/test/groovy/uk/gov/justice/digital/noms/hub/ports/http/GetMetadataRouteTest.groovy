@@ -28,7 +28,7 @@ class GetMetadataRouteTest extends Specification {
                 .build()
     }
 
-    def 'Retrieve the article for a given ID'() throws Exception {
+    def 'Retrieve a Content Item for a given ID'() throws Exception {
         setup:
         String id = '1234'
         metadataRepository.findOne(id) >> new ContentItem('Title A', 'http://localhost/test/somefile.pdf')
@@ -37,6 +37,21 @@ class GetMetadataRouteTest extends Specification {
         String result = mockMvc.perform(get('/content-items/' + id))
                 .andDo(print())
                 .andExpect(jsonPath('$.title').value('Title A'))
+                .andExpect(jsonPath('$.mediaUri').value('http://localhost/test/somefile.pdf'))
+                .andExpect(status().isOk())
+
+        then:
+        assertThat(result, notNullValue())
+    }
+
+    def 'Retrieve a single Content Item'() throws Exception {
+        setup:
+        metadataRepository.findTopByOrderByTitle() >> new ContentItem('Title B', 'http://localhost/test/somefile.pdf')
+
+        when:
+        String result = mockMvc.perform(get('/content-items'))
+                .andDo(print())
+                .andExpect(jsonPath('$.title').value('Title B'))
                 .andExpect(jsonPath('$.mediaUri').value('http://localhost/test/somefile.pdf'))
                 .andExpect(status().isOk())
 

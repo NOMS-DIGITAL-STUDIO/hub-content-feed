@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
 import spock.lang.Specification
 
-import static org.hamcrest.CoreMatchers.containsString
 import static org.hamcrest.CoreMatchers.is
 import static org.hamcrest.CoreMatchers.notNullValue
 import static org.hamcrest.MatcherAssert.assertThat
@@ -34,7 +33,7 @@ class GetContentItemTest extends Specification {
         clearDownMongoDB()
     }
 
-    def 'Call Rest Service'() throws Exception {
+    def 'Call Rest Service with a given Content Item ID'() throws Exception {
         setup:
         String id = setupMongoRecord(TITLE_PREFIX+'-Call Rest Service', 'http://localhost/test/somefile.pdf')
 
@@ -46,6 +45,16 @@ class GetContentItemTest extends Specification {
         assertThat(response.statusCode, is(HttpStatus.OK))
         assertThat(JsonPath.read(response.getBody(),'$.title'), is(TITLE_PREFIX+'-Call Rest Service'))
         assertThat(JsonPath.read(response.getBody(),'$.mediaUri'), is('http://localhost/test/somefile.pdf'))
+
+    }
+
+    def 'Call Rest Service to get a single content item'() throws Exception {
+        when:
+        ResponseEntity<String>  response= restTemplate.getForEntity(deployedUrl+'/content-items', String.class)
+
+        then:
+        assertThat(response, notNullValue())
+        assertThat(response.statusCode, is(HttpStatus.OK))
 
     }
 
