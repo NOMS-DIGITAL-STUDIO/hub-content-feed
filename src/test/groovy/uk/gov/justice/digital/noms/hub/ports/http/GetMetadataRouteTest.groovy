@@ -37,7 +37,7 @@ class GetMetadataRouteTest extends Specification {
         String result = mockMvc.perform(get('/content-items/' + id))
                 .andDo(print())
                 .andExpect(jsonPath('$.title').value('Title A'))
-                .andExpect(jsonPath('$.mediaUri').value('http://localhost/test/somefile.pdf'))
+                .andExpect(jsonPath('$.uri').value('http://localhost/test/somefile.pdf'))
                 .andExpect(status().isOk())
 
         then:
@@ -46,13 +46,14 @@ class GetMetadataRouteTest extends Specification {
 
     def 'Retrieve a single Content Item'() throws Exception {
         setup:
-        metadataRepository.findTopByOrderByTitle() >> new ContentItem('Title B', 'http://localhost/test/somefile.pdf')
+        metadataRepository.findAll() >> Arrays.asList(new ContentItem('Title B', 'http://localhost/test/somefile.pdf'),
+                new ContentItem('Title C', 'http://localhost/test/somefile.pdf'))
 
         when:
         String result = mockMvc.perform(get('/content-items'))
                 .andDo(print())
-                .andExpect(jsonPath('$.title').value('Title B'))
-                .andExpect(jsonPath('$.mediaUri').value('http://localhost/test/somefile.pdf'))
+                .andExpect(jsonPath('$.contentItems[0].title').value('Title C'))
+                .andExpect(jsonPath('$.contentItems[0].uri').value('http://localhost/test/somefile.pdf'))
                 .andExpect(status().isOk())
 
         then:

@@ -35,7 +35,7 @@ class GetContentItemTest extends Specification {
 
     def 'Call Rest Service with a given Content Item ID'() throws Exception {
         setup:
-        String id = setupMongoRecord(TITLE_PREFIX+'-Call Rest Service', 'http://localhost/test/somefile.pdf')
+        String id = setupMongoRecord(TITLE_PREFIX+'-Call Rest Service', 'http://localhost/test/somefile1.pdf')
 
         when:
         ResponseEntity<String>  response= restTemplate.getForEntity(deployedUrl+'/content-items/'+id, String.class)
@@ -44,18 +44,17 @@ class GetContentItemTest extends Specification {
         assertThat(response, notNullValue())
         assertThat(response.statusCode, is(HttpStatus.OK))
         assertThat(JsonPath.read(response.getBody(),'$.title'), is(TITLE_PREFIX+'-Call Rest Service'))
-        assertThat(JsonPath.read(response.getBody(),'$.mediaUri'), is('http://localhost/test/somefile.pdf'))
+        assertThat(JsonPath.read(response.getBody(),'$.uri'), is('http://localhost/test/somefile1.pdf'))
 
     }
 
-    def 'Call Rest Service to get a single content item'() throws Exception {
+    def 'Call Rest Service to get a list of content items'() throws Exception {
         when:
         ResponseEntity<String>  response= restTemplate.getForEntity(deployedUrl+'/content-items', String.class)
 
         then:
         assertThat(response, notNullValue())
         assertThat(response.statusCode, is(HttpStatus.OK))
-
     }
 
     private void setupMongoDB() {
@@ -81,8 +80,8 @@ class GetContentItemTest extends Specification {
         mongoDatabase.getCollection(CONTENT_ITEM).deleteMany(deleteFilter)
     }
 
-    private String setupMongoRecord(String title, String mediaUri) {
-        Document document = new Document(title: title, mediaUri: mediaUri)
+    private String setupMongoRecord(String title, String uri) {
+        Document document = new Document(title: title, uri: uri)
         mongoDatabase.getCollection(CONTENT_ITEM).insertOne(document)
         document.get('_id').toString()
     }
