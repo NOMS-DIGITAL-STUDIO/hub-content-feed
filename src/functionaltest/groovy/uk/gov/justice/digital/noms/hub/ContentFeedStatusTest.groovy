@@ -37,7 +37,7 @@ class ContentFeedStatusTest extends Specification {
         deployedUrl = System.getenv('deployedURL')
         if(!deployedUrl) {
             deployedUrl = 'http://localhost:8080/hub-content-feed'
+            log.info('deployedUrl: local')
         }
-        log.info('deployedUrl: {}', deployedUrl)
     }
 }

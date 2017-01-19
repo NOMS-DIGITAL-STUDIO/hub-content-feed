@@ -61,8 +61,8 @@ class GetContentItemTest extends Specification {
         mongoDbURL = System.getenv('mongoDbURL')
         if(!mongoDbURL) {
             mongoDbURL = 'mongodb://localhost:27017'
+            log.info('mongoDbURL: local')
         }
-        log.info('mongoDbURL: {}', mongoDbURL)
         MongoClient mongoClient = new MongoClient(new MongoClientURI(mongoDbURL))
         mongoDatabase = mongoClient.getDatabase('hub_metadata')
     }
@@ -71,8 +71,8 @@ class GetContentItemTest extends Specification {
         deployedUrl = System.getenv('deployedURL')
         if(!deployedUrl) {
             deployedUrl = 'http://localhost:8080/hub-content-feed'
+            log.info('deployedUrl: local')
         }
-        log.info('deployedUrl: {}', deployedUrl)
     }
 
     private void clearDownMongoDB() {
