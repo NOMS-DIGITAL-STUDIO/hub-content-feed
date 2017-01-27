@@ -10,3 +10,4 @@ deployment:
       - git push git@heroku.com:hub-content-feed.git $CIRCLE_SHA1:master
       - heroku ps:scale web=1 --app hub-content-feed
       - ./run-functional-test.sh
+      - curl -v -X POST https://circleci.com/api/v1.1/project/github/NOMS-DIGITAL-STUDIO/hub-function-test?circle-token=$CIRCLE_TOKEN
