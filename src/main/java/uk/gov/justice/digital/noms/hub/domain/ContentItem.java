@@ -1,6 +1,5 @@
 package uk.gov.justice.digital.noms.hub.domain;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
