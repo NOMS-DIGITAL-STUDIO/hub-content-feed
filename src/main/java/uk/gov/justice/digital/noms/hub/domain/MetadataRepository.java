@@ -8,5 +8,6 @@ public interface MetadataRepository extends MongoRepository<ContentItem, String>
 
     ContentItem findTopByOrderByTitle();
     List<ContentItem> findOrderById();
+    List<ContentItem> findDistinctByCategory();
 
 }
