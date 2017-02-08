@@ -52,6 +52,8 @@ dependencies {
     compile 'org.postgresql:postgresql:9.4.1208'
     compile 'com.jayway.jsonpath:json-path:2.1.0'
 
+    compile 'org.apache.velocity:velocity:1.6.2'
+
     compileOnly 'org.projectlombok:lombok:1.16.10'
 
     testCompile 'junit:junit:4.12'

@@ -1,0 +1,80 @@
+db.contentItem.insertMany([
+  {
+    "filename": "hub-feature-specs-test-prospectus10.pdf",
+    "title": "hub-feature-specs:Upload Course Prospectus 10",
+    "category": "Distance Learning",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus11.pdf",
+    "title": "hub-feature-specs:Upload Course Prospectus 11",
+    "category": "Art & Literature",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus12.pdf",
+    "title": "hub-feature-specs:Upload Course Prospectus 12",
+    "category": "Business & Economics",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus13.pdf",
+    "title": "hub-feature-specs:Upload Course Prospectus 13",
+    "category": "Counselling & Psychology",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus14.pdf",
+    "title": "hub-feature-specs:Upload Course Prospectus 14",
+    "category": "English",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus15.pdf",
+    "title": "hub-feature-specs:Upload Course Prospectus 15",
+    "category": "Environmental Studies",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus16.pdf",
+    "title": "hub-feature-specs:Upload Course Prospectus 16",
+    "category": "Foreign Languages",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus17.pdf",
+    "title": "hub-feature-specs:Upload Course Prospectus 17",
+    "category": "History",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus18.pdf",
+    "title": "hub-feature-specs:Upload Course Prospectus 18",
+    "category": "Law & Politics",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus19.pdf",
+    "title": "hub-feature-specs:Upload Course",
+    "category": "Maths",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus20.pdf",
+    "title": "hub-feature-specs:Upload Course Prospectus 20",
+    "category": "Philosophy",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus21.pdf",
+    "title": "hub-feature-specs:Upload Course",
+    "category": "Science",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  },
+  {
+    "filename": "hub-feature-specs-test-prospectus22.pdf",
+    "title": "hub-feature-specs:Upload Course Prospectus 22",
+    "category": "Sociology",
+    "timestamp": "2017-02-08T13:18:56.944Z"
+  }
+])
