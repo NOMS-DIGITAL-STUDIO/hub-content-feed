@@ -8,9 +8,22 @@ This service is responsible for content metadata delivery to the consumers.
 Ministry of Justice.
 National Offender Management Service.
 
+Build
+----
+```
+./gradlew clean build
+```
+
+Run
+----
+```
+./gradlew bootRun
+```
+
+
 Get Content Item for a given ID endpoint
 ----
-Get /content-items/<id> 
+GET /hub-content-feed/content-items/<id> 
 Retrieve a ContentItem for a given ID which is currently made up of just a title and a media uri.
 
 Examples
@@ -21,26 +34,17 @@ Request:
 
 Response:
 ```
-*   Trying ::1...
-* Connected to localhost (::1) port 8080 (#0)
-> GET /hub-content-feed/content-items/587cd2f44c64771de682d0d1 HTTP/1.1
-> Host: localhost:8080
-> User-Agent: curl/7.43.0
-> Accept: */*
->
-< HTTP/1.1 200
-< X-Application-Context: application
-< Content-Type: application/json;charset=UTF-8
-< Transfer-Encoding: chunked
-< Date: Mon, 16 Jan 2017 14:19:27 GMT
-<
-* Connection #0 to host localhost left intact
-{"title":"hub-content-feed-Call Rest Service"}%
+Status: 200
+{
+  "title": "hub-feature-specs:Upload Course Prospectus",
+  "uri": "http://<host>/content-items/hub-feature-specs-test-prospectus1.pdf",
+  "id": "589c25c1d12d27267cc7b94a"
+}
 ```
 
 Get Content Item endpoint
 ----
-Get /content-items 
+GET /hub-content-feed/content-items 
 Retrieve a single ContentItem which is currently made up of just a title and media uri.
 
 Examples
@@ -51,32 +55,29 @@ Request:
 
 Response:
 ```
-*   Trying ::1...
-* Connected to localhost (::1) port 8080 (#0)
-> GET /hub-content-feed/content-items HTTP/1.1
-> Host: localhost:8080
-> User-Agent: curl/7.43.0
-> Accept: */*
->
-< HTTP/1.1 200
-< X-Application-Context: application
-< Content-Type: application/json;charset=UTF-8
-< Transfer-Encoding: chunked
-< Date: Mon, 16 Jan 2017 16:35:15 GMT
-<
-* Connection #0 to host localhost left intact
-{"title":"ABC","mediaUri":null}%
+Status: 200
+
+{
+  "contentItems": [
+    {
+      "title": "hub-feature-specs:Upload Course Prospectus",
+      "uri": "http://<host>/content-items/hub-feature-specs-test-prospectus1.pdf",
+      "id": "589c25c1d12d27267cc7b94a"
+    }
+  ]
+}
 ```
 
 Monitoring endpoint
 ----
-GET /health
+GET /hub-content-feed/health
 
 e.g.
 ```
 http://localhost:8080/hub-content-feed/health
 http://hub-content-feed.herokuapp.com/hub-content-feed/health
 ```
+
 Environment variable required by the application
 ----
 ```
