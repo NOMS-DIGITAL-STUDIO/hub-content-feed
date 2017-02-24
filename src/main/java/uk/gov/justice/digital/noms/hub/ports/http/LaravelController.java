@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.justice.digital.noms.hub.domain.ContentItem;
 import uk.gov.justice.digital.noms.hub.domain.MetadataRepository;
-import uk.gov.justice.digital.noms.hub.ports.http.response.ContentItemList;
 
 import java.io.StringWriter;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,44 +33,59 @@ public class LaravelController {
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public String findCourseCategoriesItemForID(@PathVariable String id) throws Exception {
-        System.out.println("Foo");
-        List<ContentItem> results = metadataRepository.findAll();
+        System.out.println("findCourseCategoriesItemForID: " + id);
 
+        List<ContentItem> results = metadataRepository.findAll();
         List<String> categories = results.stream()
-                .map(ContentItem::getCategory)
+                .map(contentItem -> contentItem.getMetadata().get("category"))
                 .distinct()
                 .collect(toList());
 
-        System.out.println(categories);
-
-        VelocityEngine ve = new VelocityEngine();
-        ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
-        ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
-        ve.init();
-        Template template = ve.getTemplate("category-response.vm");
+        Map<String, Object> data = new HashMap<>();
+        data.put("id", id);
+        data.put("categories", categories);
 
         VelocityContext context = new VelocityContext();
-        Map<String, Object> data = new HashMap<>();
-
-        data.put("id", id);
-        data.put("cats", categories);
-
         context.put("data", data);
         StringWriter out = new StringWriter();
+        VelocityEngine ve = velocityEngine();
+        Template template = ve.getTemplate("category-response.vm");
         template.merge(context, out);
-
 
         return out.toString();
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ContentItemList findAllContentItems() {
-        log.info("Retrieve All Content Items");
-        List<ContentItem> list = metadataRepository.findAll();
-        if(list.size() > 0) {
-            return new ContentItemList(Arrays.asList(list.get(list.size() - 1)));
-        }
-        return new ContentItemList();
+    private VelocityEngine velocityEngine() throws Exception {
+        VelocityEngine ve = new VelocityEngine();
+        ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+        ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+        ve.init();
+        return ve;
+    }
+
+    @RequestMapping(value = "/pdfs/{id}", method = RequestMethod.GET)
+    public String findCoursesItemForID(@PathVariable String id) throws Exception {
+
+        List<ContentItem> results = metadataRepository.findAll();
+        List<ContentItem> items = results.stream()
+                .filter(contentItem -> contentItem.getMetadata().get("category").equals(id))
+                .map(contentItem -> contentItem)
+                .collect(toList());
+
+        System.out.println("items: " + items);
+        Map<String, Object> data = new HashMap<>();
+        data.put("id", id);
+        data.put("items", items);
+
+        VelocityContext context = new VelocityContext();
+        context.put("data", data);
+        StringWriter out = new StringWriter();
+        VelocityEngine ve = velocityEngine();
+        Template template = ve.getTemplate("pdf-response.vm");
+        template.merge(context, out);
+
+        return out.toString();
+
     }
 
 }

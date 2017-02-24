@@ -70,7 +70,7 @@ class GetContentItemTest extends Specification {
     private void setupDeployedUrl() {
         deployedUrl = System.getenv('deployedURL')
         if(!deployedUrl) {
-            deployedUrl = 'http://localhost:8080/hub-content-feed'
+            deployedUrl = 'http://localhost:8080/'
             log.info('deployedUrl: local')
         }
     }

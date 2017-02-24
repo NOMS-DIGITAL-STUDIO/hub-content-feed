@@ -1,5 +1,5 @@
 server:
-    contextPath: ${hubcontentfeed.contextpath:/hub-content-feed}
+    contextPath: ${hubcontentfeed.contextpath:/}
 spring:
     data:
         mongodb:

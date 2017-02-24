@@ -10,7 +10,6 @@ import spock.lang.Specification
 import static org.hamcrest.CoreMatchers.is
 import static org.hamcrest.CoreMatchers.notNullValue
 import static org.hamcrest.MatcherAssert.assertThat
-import org.springframework.test.web.servlet.result.JsonPathResultMatchers;
 
 @Slf4j
 class ContentFeedStatusTest extends Specification {
@@ -36,7 +35,7 @@ class ContentFeedStatusTest extends Specification {
     private void setupDeployedUrl() {
         deployedUrl = System.getenv('deployedURL')
         if(!deployedUrl) {
-            deployedUrl = 'http://localhost:8080/hub-content-feed'
+            deployedUrl = 'http://localhost:8080/'
             log.info('deployedUrl: local')
         }
     }

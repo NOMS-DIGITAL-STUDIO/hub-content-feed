@@ -44,7 +44,7 @@ class GetMetadataRouteTest extends Specification {
         assertThat(result, notNullValue())
     }
 
-    def 'Retrieve a single Content Item'() throws Exception {
+    def 'Retrieve a Content Item'() throws Exception {
         setup:
         metadataRepository.findAll() >> Arrays.asList(new ContentItem('Title B', 'http://localhost/test/somefile.pdf'),
                 new ContentItem('Title C', 'http://localhost/test/somefile.pdf'))
@@ -52,7 +52,7 @@ class GetMetadataRouteTest extends Specification {
         when:
         String result = mockMvc.perform(get('/content-items'))
                 .andDo(print())
-                .andExpect(jsonPath('$.contentItems[0].title').value('Title C'))
+                .andExpect(jsonPath('$.contentItems[0].title').value('Title B'))
                 .andExpect(jsonPath('$.contentItems[0].uri').value('http://localhost/test/somefile.pdf'))
                 .andExpect(status().isOk())
 

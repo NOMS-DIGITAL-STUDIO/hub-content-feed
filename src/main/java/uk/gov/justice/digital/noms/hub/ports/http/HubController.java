@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.justice.digital.noms.hub.domain.ContentItem;
-import uk.gov.justice.digital.noms.hub.ports.http.response.ContentItemList;
 import uk.gov.justice.digital.noms.hub.domain.MetadataRepository;
+import uk.gov.justice.digital.noms.hub.ports.http.response.ContentItemList;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -40,7 +39,7 @@ public class HubController {
         log.info("Retrieve All Content Items");
         List<ContentItem> list = metadataRepository.findAll();
         if(list.size() > 0) {
-            return new ContentItemList(Arrays.asList(list.get(list.size() - 1)));
+            return new ContentItemList(list);
         }
         return new ContentItemList();
     }

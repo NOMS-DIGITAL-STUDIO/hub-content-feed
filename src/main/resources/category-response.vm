@@ -4,13 +4,15 @@
     "cat_name": "National Extension College",
     "cat_description": "\u003Cp\u003EIf you study on a course with the NEC, you will receive a pack of course materials and a tutor who will provide you with all of the resources you need to complete the qualification. In the sample course material below you may find links to content that you cannot access from within your prison. Don\u0027t worry about this as you will be able to find all of this information in your resource pack.\u003C\/p\u003E\r\n\r\n\u003Cp\u003E\u0026nbsp;\u003C\/p\u003E\r\n",
     "additional_description": null,
-    "cat_banner": ""
+    "cat_banner": "",
+    "back_link":"/hub/116"
+
   },
   "children": [
 
-    #foreach( $item in $data.cats )
+    #foreach( $item in $data.categories )
     {
-    "tid": null,
+    "tid": "$item",
     "name": "$item",
     "parent": null,
     "cat_description": null,
