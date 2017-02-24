@@ -37,7 +37,7 @@ public class LaravelController {
 
         List<ContentItem> results = metadataRepository.findAll();
         List<String> categories = results.stream()
-                .map(contentItem -> contentItem.getMetadata().get("category"))
+                .map(contentItem -> contentItem.getMetadata() != null ? contentItem.getMetadata().get("category") : null)
                 .distinct()
                 .collect(toList());
 
@@ -68,7 +68,7 @@ public class LaravelController {
 
         List<ContentItem> results = metadataRepository.findAll();
         List<ContentItem> items = results.stream()
-                .filter(contentItem -> contentItem.getMetadata().get("category").equals(id))
+                .filter(contentItem -> contentItem.getMetadata() != null && contentItem.getMetadata().get("category").equals(id))
                 .map(contentItem -> contentItem)
                 .collect(toList());
 
