@@ -21,14 +21,17 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
 
+/**
+ * This class is a prototype/proof of concept for a spike and as such is not covered by automated tests.
+ */
 @RestController
 @RequestMapping("/api")
 @Slf4j
-public class LaravelController {
+public class LaravelDataAdapter {
 
     private final MetadataRepository metadataRepository;
 
-    public LaravelController(MetadataRepository metadataRepository) {
+    public LaravelDataAdapter(MetadataRepository metadataRepository) {
         this.metadataRepository = metadataRepository;
     }
 
@@ -42,10 +45,16 @@ public class LaravelController {
         return populateTemplate(Collections.emptyMap(), "education-providers.vm");
     }
 
+    @RequestMapping(value = "/radio/landing", method = RequestMethod.GET)
+    public String radioProviders() throws Exception {
+        return populateTemplate(Collections.emptyMap(), "radio-providers.vm");
+    }
+
     @RequestMapping(value = "pdf/course/{providerId}", method = RequestMethod.GET)
-    public String findCourseCategoriesItemForProviderId(@PathVariable String providerId) throws Exception {
+    public String findCourseCategoriesForProviderId(@PathVariable String providerId) throws Exception {
         List<ContentItem> results = metadataRepository.findAll();
         List<String> categories = results.stream()
+                .filter(contentItem -> contentItem.getMetadata() != null && "prospectus".equals(contentItem.getMetadata().get("contentType")))
                 .filter(contentItem -> contentItem.getMetadata() != null && providerId.equals(contentItem.getMetadata().get("provider")))
                 .map(contentItem -> contentItem.getMetadata() != null ? contentItem.getMetadata().get("category") : null)
                 .distinct()
@@ -59,12 +68,13 @@ public class LaravelController {
     }
 
     @RequestMapping(value = "pdf/course/pdfs/{id}", method = RequestMethod.GET)
-    public String findCoursesItemForID(@PathVariable String id) throws Exception {
+    public String findCoursesForId(@PathVariable String id) throws Exception {
         String providerId = id.split(":")[0];
         String categoryId = id.split(":")[1];
 
         List<ContentItem> results = metadataRepository.findAll();
         List<ContentItem> items = results.stream()
+                .filter(contentItem -> contentItem.getMetadata() != null && "prospectus".equals(contentItem.getMetadata().get("contentType")))
                 .filter(contentItem -> contentItem.getMetadata() != null && providerId.equals(contentItem.getMetadata().get("provider")))
                 .filter(contentItem -> contentItem.getMetadata() != null && categoryId.equals(contentItem.getMetadata().get("category")))
                 .map(contentItem -> contentItem)
@@ -75,9 +85,25 @@ public class LaravelController {
         data.put("categoryId", categoryId);
         data.put("items", items);
 
-        return populateTemplate(data, "course-list.vm");
+        return populateTemplate(data, "education-course-list.vm");
     }
 
+    @RequestMapping(value = "/api/radio/show/{id}", method = RequestMethod.GET)
+    public String findRadioShowsForProviderId(@PathVariable String providerId) throws Exception {
+
+        List<ContentItem> results = metadataRepository.findAll();
+        List<ContentItem> items = results.stream()
+                .filter(contentItem -> contentItem.getMetadata() != null && "radio".equals(contentItem.getMetadata().get("contentType")))
+                .filter(contentItem -> contentItem.getMetadata() != null && providerId.equals(contentItem.getMetadata().get("provider")))
+                .map(contentItem -> contentItem)
+                .collect(toList());
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("providerId", providerId);
+        data.put("items", items);
+
+        return populateTemplate(data, "radio-episode.vm");
+    }
 
     private String populateTemplate(Map<String, Object> data, String name) throws Exception {
         VelocityContext context = new VelocityContext();

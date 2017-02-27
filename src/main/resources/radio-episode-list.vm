@@ -1,0 +1,15 @@
+[
+#foreach( $item in $data.items )
+{
+"title":"$item.metadata.title",
+"nid":"2691",
+"description":null,
+"duration":"$item.metadata.length",
+"date":"1484061335",
+"radio_show_url":"$item.files.main",
+"thumbnail":"",
+"added_today":false
+}
+    #if( $velocityHasNext ), #end
+#end
+]

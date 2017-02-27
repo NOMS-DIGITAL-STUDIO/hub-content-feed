@@ -1,0 +1,17 @@
+{
+    "episode":{
+        "title":"Bob and Beyond 01\/01\/17",
+        "nid":"2691",
+        "description":null,
+        "duration":"49:04",
+        "date":"1484061335",
+        "radio_show_url":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/audio\/2017-01\/170101%20Bob%20and%20Beyond.mp3",
+        "thumbnail":"",
+        "added_today":false
+    },
+    "parent":{
+        "channel_name":"Bob and Beyond",
+        "channel_description":"\u003Cp\u003EA solid hour of reggae classics\u003C\/p\u003E\r\n",
+        "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2016-11\/DGP%20Bob%20And%20Beyond.jpg?itok=ajVZIqr6"
+    }
+}
