@@ -14,6 +14,7 @@ import uk.gov.justice.digital.noms.hub.domain.ContentItem;
 import uk.gov.justice.digital.noms.hub.domain.MetadataRepository;
 
 import java.io.StringWriter;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,12 @@ public class LaravelController {
         this.metadataRepository = metadataRepository;
     }
 
+    @RequestMapping(value = "/hub")
+    public String homePage() throws Exception {
+        return populateTemplate(Collections.emptyMap(), "home-page.vm");
+    }
+
+
     @RequestMapping(value = "pdf/course/{id}", method = RequestMethod.GET)
     public String findCourseCategoriesItemForID(@PathVariable String id) throws Exception {
         List<ContentItem> results = metadataRepository.findAll();
@@ -46,7 +53,6 @@ public class LaravelController {
         return populateTemplate(data, "category-response.vm");
     }
 
-
     @RequestMapping(value = "pdf/course/pdfs/{id}", method = RequestMethod.GET)
     public String findCoursesItemForID(@PathVariable String id) throws Exception {
 
@@ -61,8 +67,8 @@ public class LaravelController {
         data.put("items", items);
 
         return populateTemplate(data, "pdf-response.vm");
-
     }
+
 
     private String populateTemplate(Map<String, Object> data, String name) throws Exception {
         VelocityContext context = new VelocityContext();
