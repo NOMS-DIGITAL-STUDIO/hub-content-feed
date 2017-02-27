@@ -21,7 +21,7 @@ import java.util.Map;
 import static java.util.stream.Collectors.toList;
 
 @RestController
-@RequestMapping("/api/pdf/course/")
+@RequestMapping("/api")
 @Slf4j
 public class LaravelController {
 
@@ -31,10 +31,8 @@ public class LaravelController {
         this.metadataRepository = metadataRepository;
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "pdf/course/{id}", method = RequestMethod.GET)
     public String findCourseCategoriesItemForID(@PathVariable String id) throws Exception {
-        System.out.println("findCourseCategoriesItemForID: " + id);
-
         List<ContentItem> results = metadataRepository.findAll();
         List<String> categories = results.stream()
                 .map(contentItem -> contentItem.getMetadata() != null ? contentItem.getMetadata().get("category") : null)
@@ -45,13 +43,34 @@ public class LaravelController {
         data.put("id", id);
         data.put("categories", categories);
 
+        return populateTemplate(data, "category-response.vm");
+    }
+
+
+    @RequestMapping(value = "pdf/course/pdfs/{id}", method = RequestMethod.GET)
+    public String findCoursesItemForID(@PathVariable String id) throws Exception {
+
+        List<ContentItem> results = metadataRepository.findAll();
+        List<ContentItem> items = results.stream()
+                .filter(contentItem -> contentItem.getMetadata() != null && contentItem.getMetadata().get("category").equals(id))
+                .map(contentItem -> contentItem)
+                .collect(toList());
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("id", id);
+        data.put("items", items);
+
+        return populateTemplate(data, "pdf-response.vm");
+
+    }
+
+    private String populateTemplate(Map<String, Object> data, String name) throws Exception {
         VelocityContext context = new VelocityContext();
         context.put("data", data);
         StringWriter out = new StringWriter();
         VelocityEngine ve = velocityEngine();
-        Template template = ve.getTemplate("category-response.vm");
+        Template template = ve.getTemplate(name);
         template.merge(context, out);
-
         return out.toString();
     }
 
@@ -62,30 +81,4 @@ public class LaravelController {
         ve.init();
         return ve;
     }
-
-    @RequestMapping(value = "/pdfs/{id}", method = RequestMethod.GET)
-    public String findCoursesItemForID(@PathVariable String id) throws Exception {
-
-        List<ContentItem> results = metadataRepository.findAll();
-        List<ContentItem> items = results.stream()
-                .filter(contentItem -> contentItem.getMetadata() != null && contentItem.getMetadata().get("category").equals(id))
-                .map(contentItem -> contentItem)
-                .collect(toList());
-
-        System.out.println("items: " + items);
-        Map<String, Object> data = new HashMap<>();
-        data.put("id", id);
-        data.put("items", items);
-
-        VelocityContext context = new VelocityContext();
-        context.put("data", data);
-        StringWriter out = new StringWriter();
-        VelocityEngine ve = velocityEngine();
-        Template template = ve.getTemplate("pdf-response.vm");
-        template.merge(context, out);
-
-        return out.toString();
-
-    }
-
 }
