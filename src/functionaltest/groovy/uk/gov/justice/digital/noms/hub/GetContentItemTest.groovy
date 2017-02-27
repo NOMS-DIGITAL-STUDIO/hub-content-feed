@@ -6,7 +6,7 @@ import com.mongodb.MongoClientURI
 import com.mongodb.client.MongoDatabase
 import groovy.util.logging.Slf4j
 import org.bson.Document
-import org.bson.conversions.Bson
+import org.bson.types.ObjectId
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
@@ -30,27 +30,28 @@ class GetContentItemTest extends Specification {
         restTemplate = new RestTemplate()
         setupDeployedUrl()
         setupMongoDB()
-        clearDownMongoDB()
     }
 
     def 'Call Rest Service with a given Content Item ID'() throws Exception {
         setup:
-        String id = setupMongoRecord(TITLE_PREFIX+'-Call Rest Service', 'http://localhost/test/somefile1.pdf')
+        String id = setupMongoRecord(TITLE_PREFIX + '-Call Rest Service', 'http://localhost/test/somefile1.pdf')
 
         when:
-        ResponseEntity<String>  response= restTemplate.getForEntity(deployedUrl+'/content-items/'+id, String.class)
+        ResponseEntity<String> response = restTemplate.getForEntity(deployedUrl + '/content-items/' + id, String.class)
 
         then:
         assertThat(response, notNullValue())
         assertThat(response.statusCode, is(HttpStatus.OK))
-        assertThat(JsonPath.read(response.getBody(),'$.title'), is(TITLE_PREFIX+'-Call Rest Service'))
-        assertThat(JsonPath.read(response.getBody(),'$.uri'), is('http://localhost/test/somefile1.pdf'))
+        assertThat(JsonPath.read(response.getBody(), '$.title'), is(TITLE_PREFIX + '-Call Rest Service'))
+        assertThat(JsonPath.read(response.getBody(), '$.uri'), is('http://localhost/test/somefile1.pdf'))
 
+
+        mongoDatabase.getCollection(CONTENT_ITEM).deleteOne(new Document("_id", new ObjectId("${id}")))
     }
 
     def 'Call Rest Service to get a list of content items'() throws Exception {
         when:
-        ResponseEntity<String>  response= restTemplate.getForEntity(deployedUrl+'/content-items', String.class)
+        ResponseEntity<String> response = restTemplate.getForEntity(deployedUrl + '/content-items', String.class)
 
         then:
         assertThat(response, notNullValue())
@@ -59,7 +60,7 @@ class GetContentItemTest extends Specification {
 
     private void setupMongoDB() {
         mongoDbURL = System.getenv('mongoDbURL')
-        if(!mongoDbURL) {
+        if (!mongoDbURL) {
             mongoDbURL = 'mongodb://localhost:27017'
             log.info('mongoDbURL: local')
         }
@@ -69,15 +70,10 @@ class GetContentItemTest extends Specification {
 
     private void setupDeployedUrl() {
         deployedUrl = System.getenv('deployedURL')
-        if(!deployedUrl) {
+        if (!deployedUrl) {
             deployedUrl = 'http://localhost:8080/'
             log.info('deployedUrl: local')
         }
-    }
-
-    private void clearDownMongoDB() {
-        Bson deleteFilter = new Document('title' : '{$regex: /^hub-content-feed/i}')
-        mongoDatabase.getCollection(CONTENT_ITEM).deleteMany(deleteFilter)
     }
 
     private String setupMongoRecord(String title, String uri) {
