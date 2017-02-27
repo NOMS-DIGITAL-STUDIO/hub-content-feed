@@ -32,11 +32,15 @@ public class LaravelController {
         this.metadataRepository = metadataRepository;
     }
 
-    @RequestMapping(value = "/hub")
+    @RequestMapping(value = "/hub", method = RequestMethod.GET)
     public String homePage() throws Exception {
         return populateTemplate(Collections.emptyMap(), "home-page.vm");
     }
 
+    @RequestMapping(value = "/hub/{id}", method = RequestMethod.GET)
+    public String sectionPage(@PathVariable String id) throws Exception {
+        return populateTemplate(Collections.emptyMap(), "section-page.vm");
+    }
 
     @RequestMapping(value = "pdf/course/{id}", method = RequestMethod.GET)
     public String findCourseCategoriesItemForID(@PathVariable String id) throws Exception {
