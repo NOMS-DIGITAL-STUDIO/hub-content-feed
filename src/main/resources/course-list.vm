@@ -6,7 +6,7 @@
         "cat_name":"$data.providerId",
         "additional_description":null,
         "cat_banner":"",
-        "back_link":"/hub/116"
+        "back_link":"/hub"
     },
     "pdfs":{
         #foreach( $item in $data.items )
