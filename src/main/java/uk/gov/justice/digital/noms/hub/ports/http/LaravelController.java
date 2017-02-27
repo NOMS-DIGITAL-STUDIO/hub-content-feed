@@ -37,9 +37,9 @@ public class LaravelController {
         return populateTemplate(Collections.emptyMap(), "home-page.vm");
     }
 
-    @RequestMapping(value = "/hub/{id}", method = RequestMethod.GET)
-    public String sectionPage(@PathVariable String id) throws Exception {
-        return populateTemplate(Collections.emptyMap(), "section-page.vm");
+    @RequestMapping(value = "/hub/education", method = RequestMethod.GET)
+    public String educationProviders() throws Exception {
+        return populateTemplate(Collections.emptyMap(), "education-providers.vm");
     }
 
     @RequestMapping(value = "pdf/course/{providerId}", method = RequestMethod.GET)

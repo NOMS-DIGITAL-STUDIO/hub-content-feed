@@ -4,28 +4,28 @@
     "icon":null,
     "links":[
         {
-        "nid":"116",
+        "nid":"education",
         "title":"Education",
         "thumbnail":"app_education.png",
         "url":null,
         "parent":null
         },
         {
-        "nid":"118",
+        "nid":"video",
         "title":"Video",
         "thumbnail":"app_video.png",
         "url":"\/video",
         "parent":null
         },
         {
-        "nid":"119",
+        "nid":"radio",
         "title":"Radio",
         "thumbnail":"app_audio.png",
         "url":"\/radio",
         "parent":null
         },
         {
-        "nid":"1831",
+        "nid":"books",
         "title":"Books",
         "thumbnail":"app_books.png",
         "url":null,
