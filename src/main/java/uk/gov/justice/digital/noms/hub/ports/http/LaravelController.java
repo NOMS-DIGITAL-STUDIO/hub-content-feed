@@ -42,35 +42,40 @@ public class LaravelController {
         return populateTemplate(Collections.emptyMap(), "section-page.vm");
     }
 
-    @RequestMapping(value = "pdf/course/{id}", method = RequestMethod.GET)
-    public String findCourseCategoriesItemForID(@PathVariable String id) throws Exception {
+    @RequestMapping(value = "pdf/course/{providerId}", method = RequestMethod.GET)
+    public String findCourseCategoriesItemForProviderId(@PathVariable String providerId) throws Exception {
         List<ContentItem> results = metadataRepository.findAll();
         List<String> categories = results.stream()
+                .filter(contentItem -> contentItem.getMetadata() != null && providerId.equals(contentItem.getMetadata().get("provider")))
                 .map(contentItem -> contentItem.getMetadata() != null ? contentItem.getMetadata().get("category") : null)
                 .distinct()
                 .collect(toList());
 
         Map<String, Object> data = new HashMap<>();
-        data.put("id", id);
+        data.put("providerId", providerId);
         data.put("categories", categories);
 
-        return populateTemplate(data, "category-response.vm");
+        return populateTemplate(data, "education-subjects.vm");
     }
 
     @RequestMapping(value = "pdf/course/pdfs/{id}", method = RequestMethod.GET)
     public String findCoursesItemForID(@PathVariable String id) throws Exception {
+        String providerId = id.split(":")[0];
+        String categoryId = id.split(":")[1];
 
         List<ContentItem> results = metadataRepository.findAll();
         List<ContentItem> items = results.stream()
-                .filter(contentItem -> contentItem.getMetadata() != null && contentItem.getMetadata().get("category").equals(id))
+                .filter(contentItem -> contentItem.getMetadata() != null && providerId.equals(contentItem.getMetadata().get("provider")))
+                .filter(contentItem -> contentItem.getMetadata() != null && categoryId.equals(contentItem.getMetadata().get("category")))
                 .map(contentItem -> contentItem)
                 .collect(toList());
 
         Map<String, Object> data = new HashMap<>();
-        data.put("id", id);
+        data.put("providerId", providerId);
+        data.put("categoryId", categoryId);
         data.put("items", items);
 
-        return populateTemplate(data, "pdf-response.vm");
+        return populateTemplate(data, "course-list.vm");
     }
 
 

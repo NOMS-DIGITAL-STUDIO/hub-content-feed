@@ -1,0 +1,25 @@
+{
+  "parent": {
+    "cat_id": "$data.providerId",
+    "cat_name": "$data.providerId",
+    "cat_description": "Education provider description goes here",
+    "additional_description": null,
+    "cat_banner": "",
+    "back_link":"/hub/116"
+
+  },
+  "children": [
+
+    #foreach( $item in $data.categories )
+    {
+    "tid": "$data.providerId:$item",
+    "name": "$item",
+    "parent": null,
+    "cat_description": null,
+    "additional_description": null
+    }
+    #if( $velocityHasNext ), #end
+    #end
+
+  ]
+}
