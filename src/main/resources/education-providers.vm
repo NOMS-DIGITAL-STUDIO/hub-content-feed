@@ -1,7 +1,7 @@
 {
     "id":"116",
     "title":"Education",
-    "icon":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/2016-10\/app_education.png",
+    "icon":"/img/app_education.png",
     "parent":{
         "id":null,
         "title":"Digital Hub"

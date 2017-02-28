@@ -1,0 +1,25 @@
+{
+    "id":"116",
+    "title":"Books",
+    "icon":"/img/app_books.png",
+    "parent":{
+        "id":null,
+        "title":"Digital Hub"
+    },
+    "links":[
+        #foreach( $item in $data.items )
+        {
+        "nid": "",
+        "title": "$item.metadata.title",
+        "thumbnail":"$item.files.thumbnail",
+        "url":"$item.files.main",
+        "parent":[
+            {
+                "target_id":"116"
+            }
+        ]
+        }
+            #if( $velocityHasNext ), #end
+        #end
+    ]
+}

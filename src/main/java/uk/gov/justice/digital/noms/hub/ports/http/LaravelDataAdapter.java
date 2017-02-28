@@ -45,6 +45,19 @@ public class LaravelDataAdapter {
         return populateTemplate(Collections.emptyMap(), "education-providers.vm");
     }
 
+    @RequestMapping(value = "/hub/books", method = RequestMethod.GET)
+    public String books() throws Exception {
+        List<ContentItem> results = metadataRepository.findAll();
+        List<ContentItem> items = results.stream()
+                .filter(contentItem -> contentItem.getMetadata() != null && "book".equals(contentItem.getMetadata().get("contentType")))
+                .collect(toList());
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("items", items);
+
+        return populateTemplate(data, "books.vm");
+    }
+
     @RequestMapping(value = "/radio/landing", method = RequestMethod.GET)
     public String radioProviders() throws Exception {
         return populateTemplate(Collections.emptyMap(), "radio-providers.vm");
@@ -77,7 +90,6 @@ public class LaravelDataAdapter {
                 .filter(contentItem -> contentItem.getMetadata() != null && "prospectus".equals(contentItem.getMetadata().get("contentType")))
                 .filter(contentItem -> contentItem.getMetadata() != null && providerId.equals(contentItem.getMetadata().get("provider")))
                 .filter(contentItem -> contentItem.getMetadata() != null && categoryId.equals(contentItem.getMetadata().get("category")))
-                .map(contentItem -> contentItem)
                 .collect(toList());
 
         Map<String, Object> data = new HashMap<>();
@@ -95,7 +107,6 @@ public class LaravelDataAdapter {
         List<ContentItem> items = results.stream()
                 .filter(contentItem -> contentItem.getMetadata() != null && "radio".equals(contentItem.getMetadata().get("contentType")))
                 .filter(contentItem -> contentItem.getMetadata() != null && providerId.equals(contentItem.getMetadata().get("provider")))
-                .map(contentItem -> contentItem)
                 .collect(toList());
 
         Map<String, Object> data = new HashMap<>();
