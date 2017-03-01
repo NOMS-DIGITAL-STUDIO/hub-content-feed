@@ -50,7 +50,7 @@ public class LaravelDataAdapter {
     public String books() throws Exception {
         List<ContentItem> results = metadataRepository.findAll();
         List<ContentItem> items = results.stream()
-                .filter(contentItem -> contentItem.getMetadata() != null && "book".equals(contentItem.getMetadata().get("contentType")))
+                .filter(contentItem -> "book".equals(contentItem.contentType()))
                 .collect(toList());
 
         Map<String, Object> data = new HashMap<>();
@@ -68,7 +68,7 @@ public class LaravelDataAdapter {
     public String videoProviders() throws Exception {
         List<ContentItem> results = metadataRepository.findAll();
         Map<String, List<ContentItem>> items = results.stream()
-                .filter(contentItem -> contentItem.getMetadata() != null && "video".equals(contentItem.getMetadata().get("contentType")))
+                .filter(contentItem -> "video".equals(contentItem.contentType()))
                 .collect(groupingBy(ContentItem::provider));
 
         System.out.println(items);
@@ -84,9 +84,9 @@ public class LaravelDataAdapter {
     public String findCourseCategoriesForProviderId(@PathVariable String providerId) throws Exception {
         List<ContentItem> results = metadataRepository.findAll();
         List<String> categories = results.stream()
-                .filter(contentItem -> contentItem.getMetadata() != null && "prospectus".equals(contentItem.getMetadata().get("contentType")))
-                .filter(contentItem -> contentItem.getMetadata() != null && providerId.equals(contentItem.getMetadata().get("provider")))
-                .map(contentItem -> contentItem.getMetadata() != null ? contentItem.getMetadata().get("category") : null)
+                .filter(contentItem -> "prospectus".equals(contentItem.contentType()))
+                .filter(contentItem -> providerId.equals(contentItem.provider()))
+                .map(ContentItem::category)
                 .distinct()
                 .collect(toList());
 
@@ -104,9 +104,9 @@ public class LaravelDataAdapter {
 
         List<ContentItem> results = metadataRepository.findAll();
         List<ContentItem> items = results.stream()
-                .filter(contentItem -> contentItem.getMetadata() != null && "prospectus".equals(contentItem.getMetadata().get("contentType")))
-                .filter(contentItem -> contentItem.getMetadata() != null && providerId.equals(contentItem.getMetadata().get("provider")))
-                .filter(contentItem -> contentItem.getMetadata() != null && categoryId.equals(contentItem.getMetadata().get("category")))
+                .filter(contentItem -> "prospectus".equals(contentItem.contentType()))
+                .filter(contentItem -> providerId.equals(contentItem.provider()))
+                .filter(contentItem -> categoryId.equals(contentItem.category()))
                 .collect(toList());
 
         Map<String, Object> data = new HashMap<>();
@@ -122,8 +122,8 @@ public class LaravelDataAdapter {
 
         List<ContentItem> results = metadataRepository.findAll();
         List<ContentItem> items = results.stream()
-                .filter(contentItem -> contentItem.getMetadata() != null && "radio".equals(contentItem.getMetadata().get("contentType")))
-                .filter(contentItem -> contentItem.getMetadata() != null && providerId.equals(contentItem.getMetadata().get("provider")))
+                .filter(contentItem -> "radio".equals(contentItem.contentType()))
+                .filter(contentItem -> providerId.equals(contentItem.provider()))
                 .collect(toList());
 
         Map<String, Object> data = new HashMap<>();

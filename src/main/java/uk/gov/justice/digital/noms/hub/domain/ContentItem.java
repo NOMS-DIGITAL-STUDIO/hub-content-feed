@@ -23,6 +23,26 @@ public class ContentItem {
     }
 
     public String provider() {
-        return metadata.get("provider") != null ? metadata.get("provider") : "Unknown Provider" ;
+        if (metadata == null) {
+            return "Unknown Provider";
+        }
+
+        return metadata.get("provider");
+    }
+
+    public String contentType() {
+        if (metadata == null) {
+            return "Unknown Content Type";
+        }
+
+        return metadata.get("contentType");
+    }
+
+    public String category() {
+        if (metadata == null) {
+            return "Unknown Category";
+        }
+
+        return metadata.get("category");
     }
 }
