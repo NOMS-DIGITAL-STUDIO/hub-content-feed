@@ -4,7 +4,7 @@
 "title":"$item.metadata.title",
 "nid":"2691",
 "description":null,
-"duration":"$item.metadata.length",
+"duration":"$item.metadata.radioLength",
 "date":"1484061335",
 "radio_show_url":"$item.files.main",
 "thumbnail":"",

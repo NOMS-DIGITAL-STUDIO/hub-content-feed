@@ -22,27 +22,19 @@ public class ContentItem {
         this.uri = uri;
     }
 
-    public String provider() {
+    public String metadataItem(String key) {
         if (metadata == null) {
-            return "Unknown Provider";
+            return "No metadata for: " + key;
         }
 
-        return metadata.get("provider");
+        return metadata.get(key);
     }
 
-    public String contentType() {
-        if (metadata == null) {
-            return "Unknown Content Type";
-        }
-
-        return metadata.get("contentType");
+    public String provider() {
+        return metadata != null && metadata.get("provider") != null ? metadata.get("provider") : "unknown provider";
     }
 
     public String category() {
-        if (metadata == null) {
-            return "Unknown Category";
-        }
-
-        return metadata.get("category");
+        return metadata != null && metadata.get("category") != null ? metadata.get("category") : "unknown category";
     }
 }

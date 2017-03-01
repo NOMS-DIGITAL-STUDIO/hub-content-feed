@@ -50,7 +50,7 @@ public class LaravelDataAdapter {
     public String books() throws Exception {
         List<ContentItem> results = metadataRepository.findAll();
         List<ContentItem> items = results.stream()
-                .filter(contentItem -> "book".equals(contentItem.contentType()))
+                .filter(contentItem -> "book".equals(contentItem.metadataItem("contentType")))
                 .collect(toList());
 
         Map<String, Object> data = new HashMap<>();
@@ -64,14 +64,32 @@ public class LaravelDataAdapter {
         return populateTemplate(Collections.emptyMap(), "radio-providers.vm");
     }
 
+    @RequestMapping(value = "/radio/show/{id}", method = RequestMethod.GET)
+    public String radioShow(@PathVariable String id) throws Exception {
+        return populateTemplate(Collections.emptyMap(), "radio-episode.vm");
+    }
+
+    @RequestMapping(value = "/radio/shows/{id}", method = RequestMethod.GET)
+    public String radioShows(@PathVariable String id) throws Exception {
+        List<ContentItem> results = metadataRepository.findAll();
+        List<ContentItem> items = results.stream()
+                .filter(contentItem -> "radio".equals(contentItem.metadataItem("contentType")))
+                .filter(contentItem -> id.equals(contentItem.metadataItem("channel")))
+                .collect(toList());
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("items", items);
+
+        return populateTemplate(data, "radio-episode-list.vm");
+    }
+
     @RequestMapping(value = "/video/landing", method = RequestMethod.GET)
     public String videoProviders() throws Exception {
         List<ContentItem> results = metadataRepository.findAll();
         Map<String, List<ContentItem>> items = results.stream()
-                .filter(contentItem -> "video".equals(contentItem.contentType()))
+                .filter(contentItem -> "video".equals(contentItem.metadataItem("contentType")))
                 .collect(groupingBy(ContentItem::provider));
 
-        System.out.println(items);
         return populateTemplate(items, "video-providers.vm");
     }
 
@@ -103,8 +121,8 @@ public class LaravelDataAdapter {
     public String findCourseCategoriesForProviderId(@PathVariable String providerId) throws Exception {
         List<ContentItem> results = metadataRepository.findAll();
         List<String> categories = results.stream()
-                .filter(contentItem -> "prospectus".equals(contentItem.contentType()))
-                .filter(contentItem -> providerId.equals(contentItem.provider()))
+                .filter(contentItem -> "prospectus".equals(contentItem.metadataItem("contentType")))
+                .filter(contentItem -> providerId.equals(contentItem.metadataItem("provider")))
                 .map(ContentItem::category)
                 .distinct()
                 .collect(toList());
@@ -123,9 +141,9 @@ public class LaravelDataAdapter {
 
         List<ContentItem> results = metadataRepository.findAll();
         List<ContentItem> items = results.stream()
-                .filter(contentItem -> "prospectus".equals(contentItem.contentType()))
-                .filter(contentItem -> providerId.equals(contentItem.provider()))
-                .filter(contentItem -> categoryId.equals(contentItem.category()))
+                .filter(contentItem -> "prospectus".equals(contentItem.metadataItem("contentType")))
+                .filter(contentItem -> providerId.equals(contentItem.metadataItem("provider")))
+                .filter(contentItem -> categoryId.equals(contentItem.metadataItem("category")))
                 .collect(toList());
 
         Map<String, Object> data = new HashMap<>();
@@ -141,8 +159,8 @@ public class LaravelDataAdapter {
 
         List<ContentItem> results = metadataRepository.findAll();
         List<ContentItem> items = results.stream()
-                .filter(contentItem -> "radio".equals(contentItem.contentType()))
-                .filter(contentItem -> providerId.equals(contentItem.provider()))
+                .filter(contentItem -> "radio".equals(contentItem.metadataItem("contentType")))
+                .filter(contentItem -> providerId.equals(contentItem.metadataItem("provider")))
                 .collect(toList());
 
         Map<String, Object> data = new HashMap<>();
