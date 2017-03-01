@@ -21,4 +21,8 @@ public class ContentItem {
         this.title = title;
         this.uri = uri;
     }
+
+    public String provider() {
+        return metadata.get("provider") != null ? metadata.get("provider") : "Unknown Provider" ;
+    }
 }

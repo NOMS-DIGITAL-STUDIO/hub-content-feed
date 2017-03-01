@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -61,6 +62,22 @@ public class LaravelDataAdapter {
     @RequestMapping(value = "/radio/landing", method = RequestMethod.GET)
     public String radioProviders() throws Exception {
         return populateTemplate(Collections.emptyMap(), "radio-providers.vm");
+    }
+
+    @RequestMapping(value = "/video/landing", method = RequestMethod.GET)
+    public String videoProviders() throws Exception {
+        List<ContentItem> results = metadataRepository.findAll();
+        Map<String, List<ContentItem>> items = results.stream()
+                .filter(contentItem -> contentItem.getMetadata() != null && "video".equals(contentItem.getMetadata().get("contentType")))
+                .collect(groupingBy(ContentItem::provider));
+
+        System.out.println(items);
+        return populateTemplate(items, "video-providers.vm");
+    }
+
+    @RequestMapping(value = "/video/recent", method = RequestMethod.GET)
+    public String recentVideos() throws Exception {
+        return populateTemplate(Collections.emptyMap(), "video-recent.vm");
     }
 
     @RequestMapping(value = "pdf/course/{providerId}", method = RequestMethod.GET)
@@ -116,7 +133,7 @@ public class LaravelDataAdapter {
         return populateTemplate(data, "radio-episode.vm");
     }
 
-    private String populateTemplate(Map<String, Object> data, String name) throws Exception {
+    private String populateTemplate(Map<String, ? extends Object> data, String name) throws Exception {
         VelocityContext context = new VelocityContext();
         context.put("data", data);
         StringWriter out = new StringWriter();

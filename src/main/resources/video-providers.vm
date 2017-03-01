@@ -1,0 +1,36 @@
+[
+    #foreach( $item in $data.entrySet() )
+    {
+        "tid": "191",
+        "channel": "$item.key",
+        "landing_page": "1",
+        "programmes": [
+            #foreach( $programme in $item.value )
+                {
+                "tid": "661",
+                "title": "$programme.metadata.title",
+                "episodes": {
+                    "nid": "4431",
+                    "title": "",
+                    "description": [
+                        {
+                        "value": "",
+                        "summary": "",
+                        "format": "basic_html"
+                        }
+                    ],
+                    "category": {
+                        "id": "661",
+                        "title": ""
+                    },
+                    "thumbnail": "$programme.files.thumbnail"
+                  }
+                }
+                #if( $velocityHasNext ), #end
+            #end
+        ]
+    }
+
+        #if( $velocityHasNext ), #end
+    #end
+]
