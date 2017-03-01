@@ -1,0 +1,56 @@
+{
+"title":"Way2Learn",
+"description":"\u003Ch3\u003EStudy In-Cell\u003C\/h3\u003E\r\n\r\n\u003Cp\u003E\u003Cstrong\u003EBite-sized courses for flexible study\u003C\/strong\u003E\u003C\/p\u003E\r\n\r\n\u003Cp\u003EWelcome to the home screen of Way2Learn. Courses on offer here introduce you to a wide range of subjects and give you the ability to study in-cell at your own pace. Simply take a look at what\u0027s on offer, decide what you want to study and put in a general app and a member of the education team will come and sign you up.\u003C\/p\u003E\r\n",
+"info":"\u003Cp\u003EThe Way2Learn in-cell study service offers you a range of accredited courses which you can study in your own time and at your own pace. You do not need to worry about purchasing any materials or workbooks - these will be supplied to you by the education\u003C\/p\u003E\r\n\r\n\u003Cp\u003Eteam at your establishment. Simply put in an app requesting that you\u0027d like to sign up for one of these courses and a member of the education team will take you through a short induction process to make sure you\u0027re studying at the right level. On occasion you may be required to visist the education block for tutorials but if you are unable to do this mention this to your tutor on their first visit.\u003C\/p\u003E\r\n\r\n\u003Cp\u003EYou will recieve regular visits from either the way2Learn support mentor or a member of the education team to ensure that you are supported throughout your learning. These visits will be scheduled in advance to take into account any visits, appointments or work may already have planned.\u003C\/p\u003E\r\n\r\n\u003Cp\u003EOnce you have completed your course and the work has been marked, if it is a certificated course you will recieve acknowledgment that you have passed and certificate will be applied for. This will either be given to you in person or sent out via registered post should you have left the establishment.\u003C\/p\u003E\r\n\r\n\u003Cp\u003EIf you\u0027ve found these bite-sized courses enjoyable and useful then do consider signing up for more advanced course over in the education block. You never know - you might just have started unlocking the academic genius within.\u003C\/p\u003E\r\n",
+"video_url":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/videos\/2016-12\/Video%20explanation.mp4",
+"thumbnail_url":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-12\/video%20intro.png?itok=g0kpnnhJ",
+"left_tab_label":"Courses",
+"right_tab_label":"More Info",
+"programmes":{
+"401":{
+"tid":"401",
+"title":"Fitness for Life",
+"episodes":{
+"nid":"2591",
+"title":"EP1 - What is health and Fitness?",
+"thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-12\/FITNESS%20FOR%20LIFE%20EP1.png?itok=9FVrfEHD"
+}
+},
+"431":{
+"tid":"431",
+"title":"Logo Design",
+"episodes":{
+"nid":"71",
+"title":"Episode 1: The five main elements of logo design",
+"thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-08\/Art1.mp400001.png?itok=QGO1sqod"
+}
+},
+"411":{
+"tid":"411",
+"title":"MindSCAPE",
+"episodes":{
+"nid":"2531",
+"title":"Episode 1 A Sense of Calm - presented by Geraldine",
+"thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-12\/MINDSCAPE%20EP1%20%281%29.png?itok=JBDtVWHD"
+}
+},
+"201":{
+"tid":"201",
+"title":"Minute Maths",
+"episodes":{
+"nid":"49",
+"title":"Episode 1: Area - The space inside a shape",
+"thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-08\/Ryan1.mp400001.png?itok=U7oDFIBR"
+}
+},
+"211":{
+"tid":"211",
+"title":"JobSmart",
+"episodes":{
+"nid":"67",
+"title":"Episode 1: Mindset - Developing the right attitude",
+"thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-08\/JobSmart%20UNIT1.mp400001.png?itok=x2nktRjC"
+}
+}
+}
+}

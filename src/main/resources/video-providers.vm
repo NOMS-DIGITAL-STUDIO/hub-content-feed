@@ -10,7 +10,7 @@
                 "tid": "661",
                 "title": "$programme.metadata.title",
                 "episodes": {
-                    "nid": "4431",
+                    "nid": "$programme.id",
                     "title": "",
                     "description": [
                         {

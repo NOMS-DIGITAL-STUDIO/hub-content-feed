@@ -80,6 +80,25 @@ public class LaravelDataAdapter {
         return populateTemplate(Collections.emptyMap(), "video-recent.vm");
     }
 
+    @RequestMapping(value = "/video/channel/{id}", method = RequestMethod.GET)
+    public String videoChannels(@PathVariable String id) throws Exception {
+        return populateTemplate(Collections.emptyMap(), "video-channel.vm");
+    }
+
+    @RequestMapping(value = "/video/{id}", method = RequestMethod.GET)
+    public String videoDetails(@PathVariable String id) throws Exception {
+        ContentItem contentItem = metadataRepository.findOne(id);
+        Map<String, Object> data = new HashMap<>();
+        data.put("item", contentItem);
+
+        return populateTemplate(data, "video-details.vm");
+    }
+
+    @RequestMapping(value = "/video/episodes/{id}", method = RequestMethod.GET)
+    public String videoEpisodes(@PathVariable String id) throws Exception {
+        return populateTemplate(Collections.emptyMap(), "video-recent.vm");
+    }
+
     @RequestMapping(value = "pdf/course/{providerId}", method = RequestMethod.GET)
     public String findCourseCategoriesForProviderId(@PathVariable String providerId) throws Exception {
         List<ContentItem> results = metadataRepository.findAll();
