@@ -48,7 +48,7 @@ public class LaravelDataAdapter {
 
     @RequestMapping(value = "/hub/books", method = RequestMethod.GET)
     public String books() throws Exception {
-        List<ContentItem> results = metadataRepository.findAll();
+        List<ContentItem> results = metadataRepository.findAllPublished();
         List<ContentItem> items = results.stream()
                 .filter(contentItem -> "book".equals(contentItem.metadataItem("contentType")))
                 .collect(toList());
@@ -71,7 +71,7 @@ public class LaravelDataAdapter {
 
     @RequestMapping(value = "/radio/shows/{id}", method = RequestMethod.GET)
     public String radioShows(@PathVariable String id) throws Exception {
-        List<ContentItem> results = metadataRepository.findAll();
+        List<ContentItem> results = metadataRepository.findAllPublished();
         List<ContentItem> items = results.stream()
                 .filter(contentItem -> "radio".equals(contentItem.metadataItem("contentType")))
                 .filter(contentItem -> id.equals(contentItem.metadataItem("channel")))
@@ -85,7 +85,7 @@ public class LaravelDataAdapter {
 
     @RequestMapping(value = "/video/landing", method = RequestMethod.GET)
     public String videoProviders() throws Exception {
-        List<ContentItem> results = metadataRepository.findAll();
+        List<ContentItem> results = metadataRepository.findAllPublished();
         Map<String, List<ContentItem>> items = results.stream()
                 .filter(contentItem -> "video".equals(contentItem.metadataItem("contentType")))
                 .collect(groupingBy(ContentItem::provider));
@@ -119,7 +119,7 @@ public class LaravelDataAdapter {
 
     @RequestMapping(value = "pdf/course/{providerId}", method = RequestMethod.GET)
     public String findCourseCategoriesForProviderId(@PathVariable String providerId) throws Exception {
-        List<ContentItem> results = metadataRepository.findAll();
+        List<ContentItem> results = metadataRepository.findAllPublished();
         List<String> categories = results.stream()
                 .filter(contentItem -> "prospectus".equals(contentItem.metadataItem("contentType")))
                 .filter(contentItem -> providerId.equals(contentItem.metadataItem("provider")))
@@ -139,7 +139,7 @@ public class LaravelDataAdapter {
         String providerId = id.split(":")[0];
         String categoryId = id.split(":")[1];
 
-        List<ContentItem> results = metadataRepository.findAll();
+        List<ContentItem> results = metadataRepository.findAllPublished();
         List<ContentItem> items = results.stream()
                 .filter(contentItem -> "prospectus".equals(contentItem.metadataItem("contentType")))
                 .filter(contentItem -> providerId.equals(contentItem.metadataItem("provider")))
@@ -157,7 +157,7 @@ public class LaravelDataAdapter {
     @RequestMapping(value = "/api/radio/show/{id}", method = RequestMethod.GET)
     public String findRadioShowsForProviderId(@PathVariable String providerId) throws Exception {
 
-        List<ContentItem> results = metadataRepository.findAll();
+        List<ContentItem> results = metadataRepository.findAllPublished();
         List<ContentItem> items = results.stream()
                 .filter(contentItem -> "radio".equals(contentItem.metadataItem("contentType")))
                 .filter(contentItem -> providerId.equals(contentItem.metadataItem("provider")))
