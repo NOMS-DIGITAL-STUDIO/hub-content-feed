@@ -4,7 +4,7 @@
         "tid":"501",
         "episode_nid":"Bob%20and%20Beyond",
         "description":"\u003Cp\u003EA solid hour of reggae classics\u003C\/p\u003E\r\n",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-11\/DGP%20Bob%20And%20Beyond_0.jpg?itok=5HveDVMN",
+        "thumbnail":"/img/DGP%20Bob%20And%20Beyond_0.jpg?itok=5HveDVMN",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2016-11\/DGP%20Bob%20And%20Beyond.jpg?itok=ajVZIqr6"
     },
     "2":{
@@ -12,7 +12,7 @@
         "tid":"621",
         "episode_nid":"Check%20Up",
         "description":null,
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2017-01\/DGP%20Check%20Up_0.jpg?itok=zGuUOHYF",
+        "thumbnail":"/img/DGP%20Check%20Up_0.jpg?itok=zGuUOHYF",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2017-01\/DGP%20Check%20Up.jpg?itok=1mTKAm_I"
     },
     "3":{
@@ -20,7 +20,7 @@
         "tid":"551",
         "episode_nid":"Freedom%20Inside",
         "description":"\u003Cp\u003EYoga and Meditation\u003C\/p\u003E\r\n",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-11\/DGP%20Freedom%20Inside_0.jpg?itok=BsdskBNZ",
+        "thumbnail":"/img/DGP%20Freedom%20Inside_0.jpg?itok=BsdskBNZ",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2016-11\/DGP%20Freedom%20Inside.jpg?itok=8-u3TSC7"
     },
     "4":{
@@ -28,7 +28,7 @@
         "tid":"20",
         "episode_nid":"Hot%2020",
         "description":"\u003Cp\u003EUK chart rundown.\u003C\/p\u003E\r\n",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-11\/DGP%20Hot%2020%20copy_1.jpg?itok=nZxa6_Tg",
+        "thumbnail":"/img/DGP%20Hot%2020%20copy_1.jpg?itok=nZxa6_Tg",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2016-11\/DGP%20Hot%2020%20copy.jpg?itok=leG_4qIw"
     },
     "5":{
@@ -36,7 +36,7 @@
         "tid":"611",
         "episode_nid":"NPR%20Friday",
         "description":null,
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2017-01\/DGP%20NPR%20Friday_1.jpg?itok=jkkxNIXE",
+        "thumbnail":"/img/DGP%20NPR%20Friday_1.jpg?itok=jkkxNIXE",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2017-01\/DGP%20NPR%20Friday.jpg?itok=7nKimjZF"
     },
     "6":{
@@ -44,7 +44,7 @@
         "tid":"22",
         "episode_nid":"Past,%20Present%20and%20Future",
         "description":"\u003Cp\u003EInspiring stories from inspirational people\u003C\/p\u003E\r\n",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-11\/DGP%20Past%20Present%20Future_0.jpg?itok=Op5yZZ3z",
+        "thumbnail":"/img/DGP%20Past%20Present%20Future_0.jpg?itok=Op5yZZ3z",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2016-11\/DGP%20Past%20Present%20Future.jpg?itok=EbOwxYd3"
     },
     "7":{
@@ -52,7 +52,7 @@
         "tid":"511",
         "episode_nid":"Porridge",
         "description":"\u003Cp\u003EThe world\u2019s first national breakfast show made by and for prisoners.\u003C\/p\u003E\r\n\r\n\u003Cp\u003EIncludes the quiz, 7:40 Shout Out and the Work Out Song.\u003C\/p\u003E\r\n",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-11\/DGP%20Porridge%20copy_0.jpg?itok=G6Mqr3TM",
+        "thumbnail":"/img/DGP%20Porridge%20copy_0.jpg?itok=G6Mqr3TM",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2016-11\/DGP%20Porridge%20copy.jpg?itok=YopwtIhG"
     },
     "8":{
@@ -60,7 +60,7 @@
         "tid":"601",
         "episode_nid":"Prime%20Time",
         "description":null,
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2017-01\/DGP%20Primetime_0.jpg?itok=-qiFrJ-P",
+        "thumbnail":"/img/DGP%20Primetime_0.jpg?itok=-qiFrJ-P",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2017-01\/DGP%20Primetime.jpg?itok=zWtQSUo8"
     },
     "9":{
@@ -68,7 +68,7 @@
         "tid":"24",
         "episode_nid":"Prison%20News",
         "description":null,
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-11\/DGP%20Prison%20News%20copy_0.jpg?itok=JH6Etz0r",
+        "thumbnail":"/img/DGP%20Prison%20News%20copy_0.jpg?itok=JH6Etz0r",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2016-11\/DGP%20Prison%20News%20copy.jpg?itok=sBjgrlkz"
     },
     "10":{
@@ -76,7 +76,7 @@
         "tid":"541",
         "episode_nid":"Rock%20Show",
         "description":"\u003Cp\u003EThe very best in loud guitar music\u003C\/p\u003E\r\n",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-11\/DGP%20Rock%20Show_4.jpg?itok=vKnGif9L",
+        "thumbnail":"/img/DGP%20Rock%20Show_4.jpg?itok=vKnGif9L",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2016-11\/DGP%20Rock%20Show%20copy.jpg?itok=JZ4NEeux"
     },
     "11":{
@@ -84,7 +84,7 @@
         "tid":"26",
         "episode_nid":"Straightline",
         "description":"\u003Cp\u003E2 hours in the mix\u003C\/p\u003E\r\n",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-11\/DGP%20Straightline_0.jpg?itok=v454oPhF",
+        "thumbnail":"/img/DGP%20Straightline_0.jpg?itok=v454oPhF",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2016-11\/DGP%20Straightline.jpg?itok=tQ9o2ZdC"
     },
     "12":{
@@ -92,7 +92,7 @@
         "tid":"25",
         "episode_nid":"Takeover",
         "description":"\u003Cp\u003ETravelling around the country and giving different prisons a voice\u003C\/p\u003E\r\n",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-11\/DGP%20Takeover_0.jpg?itok=NhcQJl6b",
+        "thumbnail":"/img/DGP%20Takeover_0.jpg?itok=NhcQJl6b",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2016-11\/DGP%20Takeover.jpg?itok=7SQRqAtD"
     },
     "14":{
@@ -100,7 +100,7 @@
         "tid":"561",
         "episode_nid":"Work%20It",
         "description":"\u003Cp\u003ENational Careers Service\u003C\/p\u003E\r\n",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_landing_page_thumb\/public\/2016-11\/DGP%20Work%20It_1.jpg?itok=5tgDxvVg",
+        "thumbnail":"/img/DGP%20Work%20It_1.jpg?itok=5tgDxvVg",
         "channel_banner":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/styles\/moj_radio_category_banner\/public\/2016-11\/DGP%20Work%20It_0.jpg?itok=Z8OhDeoy"
     }
 }
