@@ -2,10 +2,10 @@
 #foreach( $item in $data.items )
 {
 "title":"$item.metadata.title",
-"nid":"2691",
+"nid":"",
 "description":null,
 "duration":"$item.metadata.radioLength",
-"date":"1484061335",
+"date":"$item.timestamp",
 "radio_show_url":"$item.files.main",
 "thumbnail":"",
 "added_today":false

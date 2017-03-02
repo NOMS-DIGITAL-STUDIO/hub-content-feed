@@ -19,17 +19,6 @@
         ]
         },
         {
-        "nid":"2501",
-        "title":"Way2Learn",
-        "thumbnail":"/img/Way2Learn-logo.png",
-        "url":"\/video\/channel\/191",
-        "parent":[
-            {
-            "target_id":"116"
-            }
-        ]
-        },
-        {
         "nid":"1051",
         "title":"Shannon Trust",
         "thumbnail":"/img/Shannon-Trust-logo.png",

@@ -24,6 +24,8 @@ import static java.util.stream.Collectors.toList;
 
 /**
  * This class is a prototype/proof of concept for a spike and as such is not covered by automated tests.
+ *
+ * **** DO NOT USE THIS CLASS IN PRODUCTION, IT IS NOT DESIGNED TO SCALE AS THE METADATA SET GROWS ****
  */
 @RestController
 @RequestMapping("/api")

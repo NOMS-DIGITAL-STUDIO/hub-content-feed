@@ -1,13 +1,13 @@
 [
     #foreach( $item in $data.entrySet() )
     {
-        "tid": "191",
+        "tid": "",
         "channel": "$item.key",
-        "landing_page": "1",
+        "landing_page": "0",
         "programmes": [
             #foreach( $programme in $item.value )
                 {
-                "tid": "661",
+                "tid": "",
                 "title": "$programme.metadata.title",
                 "episodes": {
                     "nid": "$programme.id",
@@ -20,7 +20,7 @@
                         }
                     ],
                     "category": {
-                        "id": "661",
+                        "id": "",
                         "title": ""
                     },
                     "thumbnail": "$programme.files.thumbnail"
