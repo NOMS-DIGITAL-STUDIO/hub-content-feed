@@ -10,7 +10,7 @@
         {
         "nid":"120",
         "title":"NEC Courses",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/2016-10\/NEC%20Temp.png",
+        "thumbnail":"/img/NEC-logo.png",
         "url":"\/education\/National%20Extension%20College",
         "parent":[
             {
@@ -21,7 +21,7 @@
         {
         "nid":"2501",
         "title":"Way2Learn",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/2016-12\/Way2LearnHubTile.png",
+        "thumbnail":"/img/Way2Learn-logo.png",
         "url":"\/video\/channel\/191",
         "parent":[
             {
@@ -32,7 +32,7 @@
         {
         "nid":"1051",
         "title":"Shannon Trust",
-        "thumbnail":"http:\/\/moj-hub-dev001.northeurope.cloudapp.azure.com:81\/sites\/default\/files\/2016-11\/Shannon%20Trust%20Placeholder.png",
+        "thumbnail":"/img/Shannon-Trust-logo.png",
         "url":"\/education\/Shannon%20Trust",
         "parent":[
             {
