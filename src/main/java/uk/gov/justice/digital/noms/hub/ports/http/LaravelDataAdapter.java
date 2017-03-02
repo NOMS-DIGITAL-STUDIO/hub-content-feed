@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Collections.singletonMap;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 
@@ -55,10 +56,7 @@ public class LaravelDataAdapter {
                 .filter(contentItem -> "book".equals(contentItem.metadataItem("contentType")))
                 .collect(toList());
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("items", items);
-
-        return populateTemplate(data, "books.vm");
+        return populateTemplate(singletonMap("items", items), "books.vm");
     }
 
     @RequestMapping(value = "/radio/landing", method = RequestMethod.GET)
@@ -79,10 +77,7 @@ public class LaravelDataAdapter {
                 .filter(contentItem -> id.equals(contentItem.metadataItem("channel")))
                 .collect(toList());
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("items", items);
-
-        return populateTemplate(data, "radio-episode-list.vm");
+        return populateTemplate(singletonMap("items", items), "radio-episode-list.vm");
     }
 
     @RequestMapping(value = "/video/landing", method = RequestMethod.GET)
